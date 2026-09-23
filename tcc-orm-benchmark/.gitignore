@@ -1,0 +1,3 @@
+node_modules/
+database/seed/output/*.csv
+database/metadata/dataset.json

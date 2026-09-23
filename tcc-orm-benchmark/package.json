@@ -1,0 +1,28 @@
+{
+  "name": "tcc-orm-benchmark",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dataset:small": "tsx database/seed/generator.ts small",
+    "dataset:medium": "tsx database/seed/generator.ts medium",
+    "dataset:large": "tsx database/seed/generator.ts large",
+    "dataset": "tsx database/seed/generator.ts",
+    "db:load": "tsx database/scripts/load.ts",
+    "db:reset": "psql -h localhost -p 5432 -U postgres -d tcc_orm_benchmark -f database/scripts/reset.sql",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.9.0",
+    "csv-stringify": "^6.5.2",
+    "pg": "^8.13.1",
+    "pg-copy-streams": "^6.0.6"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/pg": "^8.11.10",
+    "@types/pg-copy-streams": "^1.2.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  },
+  "type": "module"
+}
