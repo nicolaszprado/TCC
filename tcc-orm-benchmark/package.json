@@ -10,6 +10,9 @@
     "db:load": "tsx database/scripts/load.ts",
     "db:reset": "tsx database/scripts/reset.ts",
     "start:raw-sql": "tsx apps/raw-sql/src/server.ts",
+    "check:new-relic": "node --env-file=apps/.env scripts/validate-new-relic-env.mjs",
+    "start:raw-sql:apm": "node --env-file=apps/.env --import ./scripts/validate-new-relic-env.mjs --import newrelic/esm-loader.mjs --require newrelic --import tsx apps/raw-sql/src/server.ts",
+    "test:raw-sql": "node --import tsx --test apps/raw-sql/test/*.test.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -17,6 +20,7 @@
     "csv-stringify": "^6.5.2",
     "dotenv": "^18.0.3",
     "express": "^5.1.0",
+    "newrelic": "^14.5.1",
     "pg": "^8.13.1",
     "pg-copy-streams": "^6.0.6"
   },
