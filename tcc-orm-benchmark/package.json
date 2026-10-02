@@ -8,16 +8,20 @@
     "dataset:large": "tsx database/seed/generator.ts large",
     "dataset": "tsx database/seed/generator.ts",
     "db:load": "tsx database/scripts/load.ts",
-    "db:reset": "psql -h localhost -p 5432 -U postgres -d tcc_orm_benchmark -f database/scripts/reset.sql",
+    "db:reset": "tsx database/scripts/reset.ts",
+    "start:raw-sql": "tsx apps/raw-sql/src/server.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@faker-js/faker": "^9.9.0",
     "csv-stringify": "^6.5.2",
+    "dotenv": "^18.0.3",
+    "express": "^5.1.0",
     "pg": "^8.13.1",
     "pg-copy-streams": "^6.0.6"
   },
   "devDependencies": {
+    "@types/express": "^5.0.5",
     "@types/node": "^22.10.2",
     "@types/pg": "^8.11.10",
     "@types/pg-copy-streams": "^1.2.5",

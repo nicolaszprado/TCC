@@ -1,3 +1,4 @@
 node_modules/
+.env
 database/seed/output/*.csv
 database/metadata/dataset.json

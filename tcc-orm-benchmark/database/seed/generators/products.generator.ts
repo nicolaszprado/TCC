@@ -9,7 +9,7 @@ export async function generateProducts(path: string, count: number, categoryCoun
     const random = randomForId(id, 0x1001);
     const createdAt = isoDate(random);
     const updatedAt = isoDate(random);
-    await writer.write([id, random.int(1, categoryCount), `${faker.commerce.productName()} #${id}`, faker.commerce.productDescription(), productPrice(id), random.int(0, 500), random.int(1, 100) <= 92, createdAt, updatedAt]);
+    await writer.write([id, random.int(1, categoryCount), `${faker.commerce.productName()} #${id}`, faker.commerce.productDescription(), productPrice(id), random.int(0, 500), random.int(1, 100) <= 92 ? "true" : "false", createdAt, updatedAt]);
   }
   await writer.close();
 }

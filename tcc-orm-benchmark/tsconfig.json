@@ -8,5 +8,5 @@
     "skipLibCheck": true,
     "resolveJsonModule": true
   },
-  "include": ["database/**/*.ts"]
+  "include": ["apps/**/*.ts", "database/**/*.ts"]
 }
