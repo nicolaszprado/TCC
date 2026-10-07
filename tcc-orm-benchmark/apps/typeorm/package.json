@@ -1,0 +1,9 @@
+{
+  "name": "@tcc-orm-benchmark/typeorm",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/server.ts"
+  }
+}

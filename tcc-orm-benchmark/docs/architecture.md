@@ -202,3 +202,27 @@ prisma/       → Prisma
 ```
 
 ---
+
+# 6. Critério de equivalência das estratégias
+
+O benchmark adota equivalência funcional e de plano lógico. As três aplicações
+mantêm iguais as camadas HTTP, as validações, os contratos e a instrumentação;
+somente configuração e persistência variam.
+
+As implementações ORM podem usar APIs oficiais de consulta avançada quando a
+SPEC exige joins, paginação antes dos relacionamentos, bloqueio pessimista ou
+operações em lote. No TypeORM isso inclui `Repository` e `QueryBuilder`; no
+Prisma, consultas tipadas e transações. SQL bruto executado através de um ORM
+não é permitido, pois transformaria a estratégia em SQL puro com outro driver.
+
+O número de acessos ao banco definido por cada SPEC deve ser preservado nas
+leituras. Assim, uma implementação não recebe vantagem por N+1 acidental nem é
+penalizada por uma paginação semanticamente diferente. O custo de geração das
+consultas, metadados, hidratação e gerenciamento transacional continua fazendo
+parte do resultado de cada ORM.
+
+Consultas geradas e planos de execução devem ser verificados antes da coleta
+oficial. Warm-up, tamanho do pool, dataset, concorrência, processo Node.js e
+configuração de observabilidade também devem ser mantidos equivalentes. A versão
+de execução está fixada em Node.js 22.12.0 pelo arquivo `.nvmrc`, compatível com
+Prisma 7, TypeORM 0.3 e o agente New Relic utilizado pelo projeto.

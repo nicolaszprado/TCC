@@ -1,4 +1,5 @@
 node_modules/
 .env
+apps/prisma/src/generated/
 database/seed/output/*.csv
 database/metadata/dataset.json

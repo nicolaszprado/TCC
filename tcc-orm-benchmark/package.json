@@ -2,33 +2,50 @@
   "name": "tcc-orm-benchmark",
   "private": true,
   "version": "1.0.0",
+  "engines": {
+    "node": ">=22.12.0 <23"
+  },
   "scripts": {
+    "postinstall": "npm run prisma:generate",
     "dataset:small": "tsx database/seed/generator.ts small",
     "dataset:medium": "tsx database/seed/generator.ts medium",
     "dataset:large": "tsx database/seed/generator.ts large",
     "dataset": "tsx database/seed/generator.ts",
     "db:load": "tsx database/scripts/load.ts",
     "db:reset": "tsx database/scripts/reset.ts",
+    "prisma:generate": "prisma generate --config apps/prisma/prisma.config.ts",
     "start:raw-sql": "tsx apps/raw-sql/src/server.ts",
+    "start:typeorm": "tsx apps/typeorm/src/server.ts",
+    "start:prisma": "tsx apps/prisma/src/server.ts",
     "check:new-relic": "node --env-file=apps/.env scripts/validate-new-relic-env.mjs",
     "start:raw-sql:apm": "node --env-file=apps/.env --import ./scripts/validate-new-relic-env.mjs --import newrelic/esm-loader.mjs --require newrelic --import tsx apps/raw-sql/src/server.ts",
+    "start:typeorm:apm": "NEW_RELIC_APP_NAME=tcc-orm-benchmark-typeorm NEW_RELIC_LABELS='implementation:typeorm;environment:benchmark' node --env-file=apps/.env --import ./scripts/validate-new-relic-env.mjs --import newrelic/esm-loader.mjs --require newrelic --import tsx apps/typeorm/src/server.ts",
+    "start:prisma:apm": "NEW_RELIC_APP_NAME=tcc-orm-benchmark-prisma NEW_RELIC_LABELS='implementation:prisma;environment:benchmark' node --env-file=apps/.env --import ./scripts/validate-new-relic-env.mjs --import newrelic/esm-loader.mjs --require newrelic --import tsx apps/prisma/src/server.ts",
     "test:raw-sql": "node --import tsx --test apps/raw-sql/test/*.test.ts",
+    "test:typeorm": "node --import tsx --test apps/typeorm/test/*.test.ts",
+    "test:prisma": "node --import tsx --test apps/prisma/test/*.test.ts",
+    "test": "npm run test:raw-sql && npm run test:typeorm && npm run test:prisma",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@faker-js/faker": "^9.9.0",
+    "@prisma/adapter-pg": "^7.10.0",
+    "@prisma/client": "^7.10.0",
     "csv-stringify": "^6.5.2",
     "dotenv": "^18.0.3",
     "express": "^5.1.0",
     "newrelic": "^14.5.1",
     "pg": "^8.13.1",
-    "pg-copy-streams": "^6.0.6"
+    "pg-copy-streams": "^6.0.6",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.27"
   },
   "devDependencies": {
     "@types/express": "^5.0.5",
     "@types/node": "^22.10.2",
     "@types/pg": "^8.11.10",
     "@types/pg-copy-streams": "^1.2.5",
+    "prisma": "^7.10.0",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2"
   },
