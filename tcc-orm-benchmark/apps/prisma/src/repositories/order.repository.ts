@@ -1,4 +1,8 @@
 import { prisma } from '../config/database.js';
+import {
+  runWithTransactionRetry,
+  TRANSACTION_ISOLATION_PRISMA,
+} from '../../../shared/transaction-policy.js';
 import type { Prisma } from '../generated/prisma/client.js';
 import {
   type CreateOrderInput,
@@ -83,10 +87,9 @@ function hasErrorCode(error: unknown, code: string): boolean {
 }
 
 export async function insertOrder(input: CreateOrderInput): Promise<CreateOrderResult> {
-  const maxRetries = 3;
-  for (let attempt = 0; attempt <= maxRetries; attempt += 1) {
-    try {
-      return await prisma.$transaction(async (transaction) => {
+  try {
+    return await runWithTransactionRetry(
+      () => prisma.$transaction(async (transaction) => {
         const customer = await transaction.customer.findUnique({
           where: { id: BigInt(input.customerId) },
           select: { id: true },
@@ -123,6 +126,21 @@ export async function insertOrder(input: CreateOrderInput): Promise<CreateOrderR
           return { kind: 'insufficient_stock' } as const;
         }
 
+        const order = await transaction.order.create({
+          data: {
+            customerId: BigInt(input.customerId),
+            status: 'PENDING',
+            items: {
+              create: input.items.map((item) => ({
+                productId: BigInt(item.productId),
+                quantity: item.quantity,
+                unitPrice: productById.get(item.productId)!.price,
+              })),
+            },
+          },
+          select: ORDER_SELECT,
+        });
+
         const updatedAt = new Date();
         for (const item of sortedItems) {
           const result = await transaction.product.updateMany({
@@ -139,31 +157,14 @@ export async function insertOrder(input: CreateOrderInput): Promise<CreateOrderR
           if (result.count !== 1) throw new TransactionAbort('insufficient_stock');
         }
 
-        const order = await transaction.order.create({
-          data: {
-            customerId: BigInt(input.customerId),
-            status: 'PENDING',
-            items: {
-              create: input.items.map((item) => ({
-                productId: BigInt(item.productId),
-                quantity: item.quantity,
-                unitPrice: productById.get(item.productId)!.price,
-              })),
-            },
-          },
-          select: ORDER_SELECT,
-        });
-
         return { kind: 'created', order } as const;
       }, {
-        isolationLevel: 'Serializable',
-      });
-    } catch (error) {
-      if (error instanceof TransactionAbort) return { kind: error.kind };
-      if (hasErrorCode(error, 'P2034') && attempt < maxRetries) continue;
-      throw error;
-    }
+        isolationLevel: TRANSACTION_ISOLATION_PRISMA,
+      }),
+      (error) => hasErrorCode(error, 'P2034'),
+    );
+  } catch (error) {
+    if (error instanceof TransactionAbort) return { kind: error.kind };
+    throw error;
   }
-
-  throw new Error('Order transaction retry loop exhausted unexpectedly.');
 }

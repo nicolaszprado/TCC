@@ -3,3 +3,9 @@ node_modules/
 apps/prisma/src/generated/
 database/seed/output/*.csv
 database/metadata/dataset.json
+tests/k6/results/**/*.json
+tests/k6/results/**/*.log
+tests/k6/fixtures/*.json
+!tests/k6/fixtures/benchmark.example.json
+tests/k6/fixtures/*.used
+tests/k6/fixtures/.run.lock

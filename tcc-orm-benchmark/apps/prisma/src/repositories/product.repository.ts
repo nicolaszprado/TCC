@@ -72,13 +72,17 @@ export async function findProductDetailsById(id: string): Promise<ProductDetails
   });
 }
 
-export async function updateProductStock(id: string, stock: number): Promise<ProductModel | null> {
+export async function updateProductStock(
+  id: string,
+  stock: number,
+  updatedAt: Date,
+): Promise<ProductModel | null> {
   try {
     return await prisma.product.update({
       where: { id: BigInt(id) },
       data: {
         stock,
-        updatedAt: new Date(),
+        updatedAt,
       },
       select: PRODUCT_SELECT,
     });

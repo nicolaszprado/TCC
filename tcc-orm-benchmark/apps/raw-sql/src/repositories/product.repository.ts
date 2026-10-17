@@ -94,11 +94,15 @@ export async function findProductDetailsById(id: string): Promise<ProductDetails
   return result.rows[0] ?? null;
 }
 
-export async function updateProductStock(id: string, stock: number): Promise<ProductRow | null> {
+export async function updateProductStock(
+  id: string,
+  stock: number,
+  updatedAt: Date,
+): Promise<ProductRow | null> {
   const result = await pool.query<ProductRow>(
     `UPDATE products
      SET stock = $2,
-         updated_at = CURRENT_TIMESTAMP
+         updated_at = $3
      WHERE id = $1
      RETURNING
        id,
@@ -110,7 +114,7 @@ export async function updateProductStock(id: string, stock: number): Promise<Pro
        active,
        created_at,
        updated_at`,
-    [id, stock],
+    [id, stock, updatedAt],
   );
 
   return result.rows[0] ?? null;

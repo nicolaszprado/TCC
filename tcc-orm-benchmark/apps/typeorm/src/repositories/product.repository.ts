@@ -87,14 +87,18 @@ function returnedProduct(row: ProductReturningRow): ProductModel {
   });
 }
 
-export async function updateProductStock(id: string, stock: number): Promise<ProductModel | null> {
+export async function updateProductStock(
+  id: string,
+  stock: number,
+  updatedAt: Date,
+): Promise<ProductModel | null> {
   const result = await dataSource
     .getRepository(Product)
     .createQueryBuilder()
     .update(Product)
     .set({
       stock,
-      updatedAt: () => 'CURRENT_TIMESTAMP',
+      updatedAt,
     })
     .where('id = :id', { id })
     .returning('*')

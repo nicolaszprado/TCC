@@ -1,9 +1,9 @@
 import 'dotenv/config';
 
 import { app } from './app.js';
-import { prisma } from './config/database.js';
+import { pool, prisma } from './config/database.js';
 
-const port = Number(process.env.PORT ?? 3002);
+const port = Number(process.env.PORT ?? 3003);
 
 const server = app.listen(port, () => {
   console.log(`Prisma API listening on port ${port}`);
@@ -17,6 +17,7 @@ async function shutdown(): Promise<void> {
 
   server.close(async () => {
     await prisma.$disconnect();
+    await pool.end();
   });
 }
 

@@ -1,0 +1,15 @@
+{
+  "note": "Format illustration only. Generate benchmark.json from the actual database using npm run k6:prepare. This example cannot be used for load testing.",
+  "version": 1,
+  "dataset": "small",
+  "seed": 12345,
+  "preparedAt": "2026-10-16T00:00:00.000Z",
+  "hash": "generated-sha256",
+  "database": { "host": "localhost", "port": 5432, "name": "benchmark", "version": "recorded-at-preparation" },
+  "counts": { "categories": 1, "products": 1, "productDetails": 1, "customers": 1, "orders": 1, "orderItems": 1 },
+  "products": [{ "id": 100, "categoryId": 1, "price": "10.00", "active": true, "stock": 100, "hasDetails": true }],
+  "customers": [1],
+  "orders": [{ "id": 1, "customerId": 1, "status": "PENDING", "itemCount": 1 }],
+  "filters": { "categoryId": 1, "customerId": 1 },
+  "itemDistribution": { "1": 1 }
+}

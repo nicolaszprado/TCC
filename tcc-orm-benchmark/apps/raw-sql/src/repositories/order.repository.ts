@@ -1,5 +1,9 @@
 import type { Pool, PoolClient } from 'pg';
 
+import {
+  runWithTransactionRetry,
+  TRANSACTION_ISOLATION_SQL,
+} from '../../../shared/transaction-policy.js';
 import { pool } from '../config/database.js';
 import type {
   CreateOrderInput,
@@ -78,12 +82,20 @@ export async function findOrders(filters: OrderFilters): Promise<OrderListResult
   };
 }
 
-type LockedProductRow = {
+type ProductAvailabilityRow = {
   id: string;
   price: string;
   stock: number;
   active: boolean;
 };
+
+type TransactionAbortKind = Exclude<CreateOrderResult['kind'], 'created'>;
+
+class TransactionAbort extends Error {
+  constructor(readonly kind: TransactionAbortKind) {
+    super(kind);
+  }
+}
 
 async function rollback<T extends CreateOrderResult>(
   client: PoolClient,
@@ -93,11 +105,16 @@ async function rollback<T extends CreateOrderResult>(
   return result;
 }
 
-export async function insertOrder(input: CreateOrderInput): Promise<CreateOrderResult> {
+function isRetryableTransactionError(error: unknown): boolean {
+  if (typeof error !== 'object' || error === null || !('code' in error)) return false;
+  return error.code === '40001' || error.code === '40P01';
+}
+
+async function insertOrderTransaction(input: CreateOrderInput): Promise<CreateOrderResult> {
   const client = await pool.connect();
 
   try {
-    await client.query('BEGIN');
+    await client.query(`BEGIN ISOLATION LEVEL ${TRANSACTION_ISOLATION_SQL}`);
 
     const customerResult = await client.query<{ exists: boolean }>(
       `SELECT TRUE AS exists
@@ -112,12 +129,11 @@ export async function insertOrder(input: CreateOrderInput): Promise<CreateOrderR
     const sortedProductIds = input.items
       .map((item) => item.productId)
       .sort((left, right) => (BigInt(left) < BigInt(right) ? -1 : BigInt(left) > BigInt(right) ? 1 : 0));
-    const productsResult = await client.query<LockedProductRow>(
+    const productsResult = await client.query<ProductAvailabilityRow>(
       `SELECT id, price, stock, active
        FROM products
        WHERE id = ANY($1::BIGINT[])
-       ORDER BY id ASC
-       FOR UPDATE`,
+       ORDER BY id ASC`,
       [sortedProductIds],
     );
 
@@ -141,6 +157,7 @@ export async function insertOrder(input: CreateOrderInput): Promise<CreateOrderR
 
     const productIds = input.items.map((item) => item.productId);
     const quantities = input.items.map((item) => item.quantity);
+    const updatedAt = new Date();
     await client.query(
       `INSERT INTO order_items (order_id, product_id, quantity, unit_price)
        SELECT $1::BIGINT, input.product_id, input.quantity, p.price
@@ -151,14 +168,18 @@ export async function insertOrder(input: CreateOrderInput): Promise<CreateOrderR
       [orderId, productIds, quantities],
     );
 
-    await client.query(
+    const stockResult = await client.query(
       `UPDATE products p
        SET stock = p.stock - input.quantity,
-           updated_at = CURRENT_TIMESTAMP
+           updated_at = $3
        FROM UNNEST($1::BIGINT[], $2::INTEGER[]) AS input(product_id, quantity)
-       WHERE p.id = input.product_id`,
-      [productIds, quantities],
+       WHERE p.id = input.product_id
+         AND p.stock >= input.quantity`,
+      [productIds, quantities, updatedAt],
     );
+    if (stockResult.rowCount !== input.items.length) {
+      throw new TransactionAbort('insufficient_stock');
+    }
 
     const rows = await queryOrderById(client, orderId);
     await client.query('COMMIT');
@@ -172,6 +193,18 @@ export async function insertOrder(input: CreateOrderInput): Promise<CreateOrderR
     throw error;
   } finally {
     client.release();
+  }
+}
+
+export async function insertOrder(input: CreateOrderInput): Promise<CreateOrderResult> {
+  try {
+    return await runWithTransactionRetry(
+      () => insertOrderTransaction(input),
+      isRetryableTransactionError,
+    );
+  } catch (error) {
+    if (error instanceof TransactionAbort) return { kind: error.kind };
+    throw error;
   }
 }
 

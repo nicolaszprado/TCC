@@ -1,5 +1,9 @@
 import type { EntityManager, SelectQueryBuilder } from 'typeorm';
 
+import {
+  runWithTransactionRetry,
+  TRANSACTION_ISOLATION_SQL,
+} from '../../../shared/transaction-policy.js';
 import { dataSource } from '../config/database.js';
 import { Customer } from '../entities/customer.entity.js';
 import { OrderItem } from '../entities/order-item.entity.js';
@@ -129,7 +133,6 @@ async function createOrderTransaction(
       productIds: sortedItems.map((item) => item.productId),
     })
     .orderBy('product.id', 'ASC')
-    .setLock('pessimistic_write')
     .getMany();
 
   if (products.length !== input.items.length || products.some((product) => !product.active)) {
@@ -174,27 +177,53 @@ async function createOrderTransaction(
     updateParameters[`quantity${index}`] = item.quantity;
     return `WHEN CAST(:productId${index} AS BIGINT) THEN CAST(:quantity${index} AS INTEGER)`;
   }).join(' ');
+  const updatedAt = new Date();
 
-  await manager
+  const stockUpdate = await manager
     .createQueryBuilder()
     .update(Product)
     .set({
       stock: () => `"stock" - CASE "id" ${stockCases} END`,
-      updatedAt: () => 'CURRENT_TIMESTAMP',
+      updatedAt,
     })
     .where('id IN (:...productIds)')
+    .andWhere(`"stock" >= CASE "id" ${stockCases} END`)
     .setParameters(updateParameters)
     .execute();
+  if (stockUpdate.affected !== input.items.length) {
+    throw new TransactionAbort('insufficient_stock');
+  }
 
   const order = await findOrderByIdWithManager(manager, orderId);
   if (!order) throw new Error('Created order could not be loaded.');
   return { kind: 'created', order };
 }
 
+function isRetryableTransactionError(error: unknown): boolean {
+  if (typeof error !== 'object' || error === null) return false;
+
+  const code = 'code' in error ? error.code : undefined;
+  const driverError = 'driverError' in error ? error.driverError : undefined;
+  const driverCode = typeof driverError === 'object'
+    && driverError !== null
+    && 'code' in driverError
+    ? driverError.code
+    : undefined;
+
+  return code === '40001'
+    || code === '40P01'
+    || driverCode === '40001'
+    || driverCode === '40P01';
+}
+
 export async function insertOrder(input: CreateOrderInput): Promise<CreateOrderResult> {
   try {
-    return await dataSource.transaction(
-      (manager) => createOrderTransaction(manager, input),
+    return await runWithTransactionRetry(
+      () => dataSource.transaction(
+        TRANSACTION_ISOLATION_SQL,
+        (manager) => createOrderTransaction(manager, input),
+      ),
+      isRetryableTransactionError,
     );
   } catch (error) {
     if (error instanceof TransactionAbort) return { kind: error.kind };

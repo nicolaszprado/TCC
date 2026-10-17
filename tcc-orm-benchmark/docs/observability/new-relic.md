@@ -140,6 +140,22 @@ O APM altera o custo da aplicação. Portanto, separe as execuções:
 2. execução diagnóstica com `npm run start:raw-sql:apm`, usada para localizar o
    tempo gasto na aplicação e no PostgreSQL.
 
+As três variantes APM usam o mesmo agente, tracing, coleta de erros, spans,
+logging e labels equivalentes. Apenas `NEW_RELIC_APP_NAME` e o label
+`implementation` variam para separar os dados no painel. O encaminhamento de
+logs da aplicação permanece desativado em todas elas. Os comandos disponíveis
+são:
+
+```bash
+npm run start:raw-sql:apm
+npm run start:typeorm:apm
+npm run start:prisma:apm
+```
+
+O logging SQL diagnóstico é independente do APM e só deve ser ativado com
+`SQL_AUDIT=true` fora do benchmark oficial. Sem essa variável, Raw SQL,
+TypeORM e Prisma mantêm o logging de queries desativado.
+
 Quando TypeORM e Prisma forem adicionados, cada aplicação deverá ter um nome
 próprio no New Relic e exatamente as mesmas opções do agente. Não habilite
 `NEW_RELIC_SLOW_SQL_ENABLED` durante o benchmark oficial: a coleta adicional é

@@ -24,5 +24,5 @@ export function getProductDetailsById(id: string): Promise<ProductDetailsRow | n
 }
 
 export function updateProductStock(id: string, stock: number): Promise<ProductRow | null> {
-  return updateProductStockRepository(id, stock);
+  return updateProductStockRepository(id, stock, new Date());
 }

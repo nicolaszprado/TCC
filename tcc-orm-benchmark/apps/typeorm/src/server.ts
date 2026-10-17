@@ -3,7 +3,7 @@ import 'dotenv/config';
 import { app } from './app.js';
 import { dataSource } from './config/database.js';
 
-const port = Number(process.env.PORT ?? 3003);
+const port = Number(process.env.PORT ?? 3002);
 
 await dataSource.initialize();
 

@@ -2,6 +2,7 @@ import 'reflect-metadata';
 
 import { DataSource } from 'typeorm';
 
+import { DATABASE_POOL_POLICY } from '../../../shared/database-policy.js';
 import { Category } from '../entities/category.entity.js';
 import { Customer } from '../entities/customer.entity.js';
 import { OrderItem } from '../entities/order-item.entity.js';
@@ -18,8 +19,8 @@ export const dataSource = new DataSource({
   password: process.env.DB_PASSWORD ?? 'postgres',
   entities: [Category, Product, ProductDetail, Customer, Order, OrderItem],
   synchronize: false,
-  logging: false,
+  logging: process.env.SQL_AUDIT === 'true' ? ['query'] : false,
   extra: {
-    max: 10,
+    ...DATABASE_POOL_POLICY,
   },
 });
