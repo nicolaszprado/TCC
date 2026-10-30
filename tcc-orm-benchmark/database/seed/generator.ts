@@ -1,5 +1,5 @@
 import { mkdir, rename, writeFile } from 'node:fs/promises';
-import { join } from 'node:path';
+import { dirname, join } from 'node:path';
 import { DATASET_CONFIG, DATE_RANGE, RANDOM_SEED, type DatasetName } from './config.js';
 import { generateCategories } from './generators/categories.generator.js';
 import { generateCustomers } from './generators/customers.generator.js';
@@ -37,7 +37,7 @@ async function main(): Promise<void> {
   const filenames = ['categories.csv', 'products.csv', 'product_details.csv', 'customers.csv', 'orders.csv', 'order_items.csv'];
   await Promise.all(filenames.map(async (filename) => rename(temporary(filename), final(filename))));
 
-  await mkdir(join(projectRoot, 'metadata'), { recursive: true });
+  await mkdir(dirname(metadataPath), { recursive: true });
   await writeFile(metadataPath, `${JSON.stringify({
     dataset,
     seed: RANDOM_SEED,

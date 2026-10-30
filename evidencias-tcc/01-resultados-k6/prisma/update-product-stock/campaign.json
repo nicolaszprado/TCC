@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "campaignId": "prisma-update-product-stock-baseline-50vus-1793134130070",
+  "status": "passed",
+  "startedAt": "2026-10-27T20:48:50.071Z",
+  "completedAt": "2026-10-27T21:07:39.395Z",
+  "plan": {
+    "endpoint": "update-product-stock",
+    "implementation": "prisma",
+    "baseUrl": "http://localhost:3003",
+    "profile": "baseline",
+    "vus": 50,
+    "duration": "3m",
+    "repetitions": 5,
+    "warmup": "1m",
+    "resetWrites": true,
+    "dryRun": false,
+    "writes": true,
+    "plannedRuns": 6,
+    "plannedDurationSeconds": 960,
+    "note": "Database reset/load/write preparation occurs before warm-up and every measurement."
+  },
+  "runs": [
+    {
+      "runId": "prisma-update-product-stock-baseline-50vus-1793134130070-warmup",
+      "phase": "warmup",
+      "round": null,
+      "duration": "1m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\prisma\\campaign-prisma-update-product-stock-baseline-50vus-1793134130070\\fixtures-warmup.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T20:48:50.073Z",
+      "completedAt": "2026-10-27T20:50:18.181Z"
+    },
+    {
+      "runId": "prisma-update-product-stock-baseline-50vus-1793134130070-round-01",
+      "phase": "measurement",
+      "round": 1,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\prisma\\campaign-prisma-update-product-stock-baseline-50vus-1793134130070\\fixtures-round-01.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T20:50:18.182Z",
+      "completedAt": "2026-10-27T20:53:45.382Z"
+    },
+    {
+      "runId": "prisma-update-product-stock-baseline-50vus-1793134130070-round-02",
+      "phase": "measurement",
+      "round": 2,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\prisma\\campaign-prisma-update-product-stock-baseline-50vus-1793134130070\\fixtures-round-02.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T20:53:45.383Z",
+      "completedAt": "2026-10-27T20:57:12.575Z"
+    },
+    {
+      "runId": "prisma-update-product-stock-baseline-50vus-1793134130070-round-03",
+      "phase": "measurement",
+      "round": 3,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\prisma\\campaign-prisma-update-product-stock-baseline-50vus-1793134130070\\fixtures-round-03.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T20:57:12.576Z",
+      "completedAt": "2026-10-27T21:00:40.363Z"
+    },
+    {
+      "runId": "prisma-update-product-stock-baseline-50vus-1793134130070-round-04",
+      "phase": "measurement",
+      "round": 4,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\prisma\\campaign-prisma-update-product-stock-baseline-50vus-1793134130070\\fixtures-round-04.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T21:00:40.364Z",
+      "completedAt": "2026-10-27T21:04:12.150Z"
+    },
+    {
+      "runId": "prisma-update-product-stock-baseline-50vus-1793134130070-round-05",
+      "phase": "measurement",
+      "round": 5,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\prisma\\campaign-prisma-update-product-stock-baseline-50vus-1793134130070\\fixtures-round-05.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T21:04:12.151Z",
+      "completedAt": "2026-10-27T21:07:39.394Z"
+    }
+  ]
+}

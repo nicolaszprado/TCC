@@ -1,0 +1,126 @@
+{
+  "title": "Resumo de benchmark — Prisma — POST /orders",
+  "campaign_id": "prisma-create-order-baseline-50vus-1793126433595",
+  "status": "passed",
+  "executed_at_utc": {
+    "started_at": "2026-10-27T18:40:33.595Z",
+    "completed_at": "2026-10-27T18:59:33.506Z"
+  },
+  "test_configuration": {
+    "implementation": "prisma",
+    "endpoint": "POST /orders",
+    "endpoint_id": "create-order",
+    "profile": "baseline",
+    "virtual_users": 50,
+    "warmup": "1m",
+    "measurement_rounds": 5,
+    "measurement_duration_per_round": "3m",
+    "official_measurement_duration": "15m",
+    "base_url": "http://localhost:3003",
+    "database_reset_before_each_run": true
+  },
+  "result": {
+    "total_http_requests": 684335,
+    "total_checks": 1368670,
+    "failed_checks": 0,
+    "http_request_failure_rate": 0,
+    "all_thresholds_passed": true
+  },
+  "performance": {
+    "aggregation_note": "Latência e vazão são agregadas a partir das cinco rodadas; percentis não são globais combinados.",
+    "requests_per_second": {
+      "mean": 758.95,
+      "median": 759.03,
+      "min": 752.77,
+      "max": 765.7,
+      "coefficient_of_variation_percent": 0.63
+    },
+    "http_request_duration_ms": {
+      "mean_of_averages": 65.63,
+      "median_of_medians": 65.25,
+      "p95_mean": 70.86,
+      "p95_median": 70.66,
+      "p99_mean": 75.37,
+      "p99_median": 75.03
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "http_requests": 135760,
+      "requests_per_second": 752.77,
+      "http_request_duration_avg_ms": 66.18,
+      "http_request_duration_p50_ms": 65.58,
+      "http_request_duration_p95_ms": 71.75,
+      "http_request_duration_p99_ms": 78.35,
+      "http_request_duration_max_ms": 427.25,
+      "http_request_failure_rate": 0,
+      "checks_passed": 271520,
+      "checks_failed": 0
+    },
+    {
+      "round": 2,
+      "http_requests": 136879,
+      "requests_per_second": 759.03,
+      "http_request_duration_avg_ms": 65.63,
+      "http_request_duration_p50_ms": 65.25,
+      "http_request_duration_p95_ms": 70.52,
+      "http_request_duration_p99_ms": 74.19,
+      "http_request_duration_max_ms": 346.19,
+      "http_request_failure_rate": 0,
+      "checks_passed": 273758,
+      "checks_failed": 0
+    },
+    {
+      "round": 3,
+      "http_requests": 138070,
+      "requests_per_second": 765.7,
+      "http_request_duration_avg_ms": 65.02,
+      "http_request_duration_p50_ms": 64.58,
+      "http_request_duration_p95_ms": 70.29,
+      "http_request_duration_p99_ms": 75.03,
+      "http_request_duration_max_ms": 348.12,
+      "http_request_failure_rate": 0,
+      "checks_passed": 276140,
+      "checks_failed": 0
+    },
+    {
+      "round": 4,
+      "http_requests": 137507,
+      "requests_per_second": 762.53,
+      "http_request_duration_avg_ms": 65.33,
+      "http_request_duration_p50_ms": 64.92,
+      "http_request_duration_p95_ms": 70.66,
+      "http_request_duration_p99_ms": 73.95,
+      "http_request_duration_max_ms": 333.85,
+      "http_request_failure_rate": 0,
+      "checks_passed": 275014,
+      "checks_failed": 0
+    },
+    {
+      "round": 5,
+      "http_requests": 136119,
+      "requests_per_second": 754.71,
+      "http_request_duration_avg_ms": 65.99,
+      "http_request_duration_p50_ms": 65.57,
+      "http_request_duration_p95_ms": 71.1,
+      "http_request_duration_p99_ms": 75.31,
+      "http_request_duration_max_ms": 356.13,
+      "http_request_failure_rate": 0,
+      "checks_passed": 272238,
+      "checks_failed": 0
+    }
+  ],
+  "tcc_observations": [
+    "Campanha aprovada com cinco rodadas oficiais; o warm-up foi excluído das métricas.",
+    "Perfil baseline com 50 VUs e duração de 3m por rodada."
+  ],
+  "source_files": [
+    "campaign.json",
+    "round-01-summary.json",
+    "round-02-summary.json",
+    "round-03-summary.json",
+    "round-04-summary.json",
+    "round-05-summary.json"
+  ]
+}

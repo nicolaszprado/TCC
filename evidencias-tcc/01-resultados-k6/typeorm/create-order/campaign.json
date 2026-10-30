@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "campaignId": "typeorm-create-order-baseline-50vus-1793129358511",
+  "status": "passed",
+  "startedAt": "2026-10-27T19:29:18.511Z",
+  "completedAt": "2026-10-27T19:48:12.862Z",
+  "plan": {
+    "endpoint": "create-order",
+    "implementation": "typeorm",
+    "baseUrl": "http://localhost:3002",
+    "profile": "baseline",
+    "vus": 50,
+    "duration": "3m",
+    "repetitions": 5,
+    "warmup": "1m",
+    "resetWrites": true,
+    "dryRun": false,
+    "writes": true,
+    "plannedRuns": 6,
+    "plannedDurationSeconds": 960,
+    "note": "Database reset/load/write preparation occurs before warm-up and every measurement."
+  },
+  "runs": [
+    {
+      "runId": "typeorm-create-order-baseline-50vus-1793129358511-warmup",
+      "phase": "warmup",
+      "round": null,
+      "duration": "1m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\typeorm\\campaign-typeorm-create-order-baseline-50vus-1793129358511\\fixtures-warmup.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T19:29:18.513Z",
+      "completedAt": "2026-10-27T19:30:46.868Z"
+    },
+    {
+      "runId": "typeorm-create-order-baseline-50vus-1793129358511-round-01",
+      "phase": "measurement",
+      "round": 1,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\typeorm\\campaign-typeorm-create-order-baseline-50vus-1793129358511\\fixtures-round-01.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T19:30:46.869Z",
+      "completedAt": "2026-10-27T19:34:15.135Z"
+    },
+    {
+      "runId": "typeorm-create-order-baseline-50vus-1793129358511-round-02",
+      "phase": "measurement",
+      "round": 2,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\typeorm\\campaign-typeorm-create-order-baseline-50vus-1793129358511\\fixtures-round-02.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T19:34:15.136Z",
+      "completedAt": "2026-10-27T19:37:43.157Z"
+    },
+    {
+      "runId": "typeorm-create-order-baseline-50vus-1793129358511-round-03",
+      "phase": "measurement",
+      "round": 3,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\typeorm\\campaign-typeorm-create-order-baseline-50vus-1793129358511\\fixtures-round-03.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T19:37:43.158Z",
+      "completedAt": "2026-10-27T19:41:16.636Z"
+    },
+    {
+      "runId": "typeorm-create-order-baseline-50vus-1793129358511-round-04",
+      "phase": "measurement",
+      "round": 4,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\typeorm\\campaign-typeorm-create-order-baseline-50vus-1793129358511\\fixtures-round-04.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T19:41:16.637Z",
+      "completedAt": "2026-10-27T19:44:45.043Z"
+    },
+    {
+      "runId": "typeorm-create-order-baseline-50vus-1793129358511-round-05",
+      "phase": "measurement",
+      "round": 5,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\typeorm\\campaign-typeorm-create-order-baseline-50vus-1793129358511\\fixtures-round-05.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T19:44:45.044Z",
+      "completedAt": "2026-10-27T19:48:12.861Z"
+    }
+  ]
+}

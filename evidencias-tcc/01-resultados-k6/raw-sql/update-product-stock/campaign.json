@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "campaignId": "raw-sql-update-product-stock-baseline-50vus-1793131189857",
+  "status": "passed",
+  "startedAt": "2026-10-27T19:59:49.858Z",
+  "completedAt": "2026-10-27T20:18:41.391Z",
+  "plan": {
+    "endpoint": "update-product-stock",
+    "implementation": "raw-sql",
+    "baseUrl": "http://localhost:3001",
+    "profile": "baseline",
+    "vus": 50,
+    "duration": "3m",
+    "repetitions": 5,
+    "warmup": "1m",
+    "resetWrites": true,
+    "dryRun": false,
+    "writes": true,
+    "plannedRuns": 6,
+    "plannedDurationSeconds": 960,
+    "note": "Database reset/load/write preparation occurs before warm-up and every measurement."
+  },
+  "runs": [
+    {
+      "runId": "raw-sql-update-product-stock-baseline-50vus-1793131189857-warmup",
+      "phase": "warmup",
+      "round": null,
+      "duration": "1m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\raw-sql\\campaign-raw-sql-update-product-stock-baseline-50vus-1793131189857\\fixtures-warmup.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T19:59:49.860Z",
+      "completedAt": "2026-10-27T20:01:17.523Z"
+    },
+    {
+      "runId": "raw-sql-update-product-stock-baseline-50vus-1793131189857-round-01",
+      "phase": "measurement",
+      "round": 1,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\raw-sql\\campaign-raw-sql-update-product-stock-baseline-50vus-1793131189857\\fixtures-round-01.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T20:01:17.524Z",
+      "completedAt": "2026-10-27T20:04:45.522Z"
+    },
+    {
+      "runId": "raw-sql-update-product-stock-baseline-50vus-1793131189857-round-02",
+      "phase": "measurement",
+      "round": 2,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\raw-sql\\campaign-raw-sql-update-product-stock-baseline-50vus-1793131189857\\fixtures-round-02.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T20:04:45.524Z",
+      "completedAt": "2026-10-27T20:08:12.886Z"
+    },
+    {
+      "runId": "raw-sql-update-product-stock-baseline-50vus-1793131189857-round-03",
+      "phase": "measurement",
+      "round": 3,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\raw-sql\\campaign-raw-sql-update-product-stock-baseline-50vus-1793131189857\\fixtures-round-03.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T20:08:12.887Z",
+      "completedAt": "2026-10-27T20:11:40.903Z"
+    },
+    {
+      "runId": "raw-sql-update-product-stock-baseline-50vus-1793131189857-round-04",
+      "phase": "measurement",
+      "round": 4,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\raw-sql\\campaign-raw-sql-update-product-stock-baseline-50vus-1793131189857\\fixtures-round-04.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T20:11:40.904Z",
+      "completedAt": "2026-10-27T20:15:13.462Z"
+    },
+    {
+      "runId": "raw-sql-update-product-stock-baseline-50vus-1793131189857-round-05",
+      "phase": "measurement",
+      "round": 5,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\raw-sql\\campaign-raw-sql-update-product-stock-baseline-50vus-1793131189857\\fixtures-round-05.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T20:15:13.463Z",
+      "completedAt": "2026-10-27T20:18:41.389Z"
+    }
+  ]
+}

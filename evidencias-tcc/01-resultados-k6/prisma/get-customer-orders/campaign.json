@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "campaignId": "prisma-get-customer-orders-baseline-50vus-1793050803645",
+  "status": "passed",
+  "startedAt": "2026-10-26T21:40:03.646Z",
+  "completedAt": "2026-10-26T21:56:49.433Z",
+  "plan": {
+    "endpoint": "get-customer-orders",
+    "implementation": "prisma",
+    "baseUrl": "http://localhost:3003",
+    "profile": "baseline",
+    "vus": 50,
+    "duration": "3m",
+    "repetitions": 5,
+    "warmup": "1m",
+    "resetWrites": false,
+    "dryRun": false,
+    "writes": false,
+    "plannedRuns": 6,
+    "plannedDurationSeconds": 960,
+    "note": "Read fixture is reused; the database is not changed."
+  },
+  "runs": [
+    {
+      "runId": "prisma-get-customer-orders-baseline-50vus-1793050803645-warmup",
+      "phase": "warmup",
+      "round": null,
+      "duration": "1m",
+      "fixtureFile": null,
+      "status": "passed",
+      "startedAt": "2026-10-26T21:40:03.648Z",
+      "completedAt": "2026-10-26T21:41:11.535Z"
+    },
+    {
+      "runId": "prisma-get-customer-orders-baseline-50vus-1793050803645-round-01",
+      "phase": "measurement",
+      "round": 1,
+      "duration": "3m",
+      "fixtureFile": null,
+      "status": "passed",
+      "startedAt": "2026-10-26T21:41:11.536Z",
+      "completedAt": "2026-10-26T21:44:19.329Z"
+    },
+    {
+      "runId": "prisma-get-customer-orders-baseline-50vus-1793050803645-round-02",
+      "phase": "measurement",
+      "round": 2,
+      "duration": "3m",
+      "fixtureFile": null,
+      "status": "passed",
+      "startedAt": "2026-10-26T21:44:19.331Z",
+      "completedAt": "2026-10-26T21:47:26.952Z"
+    },
+    {
+      "runId": "prisma-get-customer-orders-baseline-50vus-1793050803645-round-03",
+      "phase": "measurement",
+      "round": 3,
+      "duration": "3m",
+      "fixtureFile": null,
+      "status": "passed",
+      "startedAt": "2026-10-26T21:47:26.953Z",
+      "completedAt": "2026-10-26T21:50:34.408Z"
+    },
+    {
+      "runId": "prisma-get-customer-orders-baseline-50vus-1793050803645-round-04",
+      "phase": "measurement",
+      "round": 4,
+      "duration": "3m",
+      "fixtureFile": null,
+      "status": "passed",
+      "startedAt": "2026-10-26T21:50:34.409Z",
+      "completedAt": "2026-10-26T21:53:41.946Z"
+    },
+    {
+      "runId": "prisma-get-customer-orders-baseline-50vus-1793050803645-round-05",
+      "phase": "measurement",
+      "round": 5,
+      "duration": "3m",
+      "fixtureFile": null,
+      "status": "passed",
+      "startedAt": "2026-10-26T21:53:41.947Z",
+      "completedAt": "2026-10-26T21:56:49.432Z"
+    }
+  ]
+}

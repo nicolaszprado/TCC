@@ -15,6 +15,7 @@
     "db:reset": "tsx database/scripts/reset.ts",
     "k6:prepare": "tsx tests/k6/tools/prepare-fixtures.ts",
     "k6:run": "tsx tests/k6/tools/run.ts",
+    "k6:campaign": "tsx tests/k6/tools/campaign.ts",
     "k6:verify": "tsx tests/k6/tools/verify-writes.ts",
     "test:k6": "node --test tests/k6/unit/*.test.mjs",
     "typecheck:k6": "tsc -p tests/k6/tools/tsconfig.json",
@@ -48,13 +49,17 @@
     "typeorm": "^0.3.27"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@types/express": "^5.0.5",
     "@types/node": "^22.10.2",
     "@types/pg": "^8.11.10",
     "@types/pg-copy-streams": "^1.2.5",
+    "eslint": "^10.14.0",
     "prisma": "^7.10.0",
+    "sloc": "^0.3.2",
     "tsx": "^4.19.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.72.1"
   },
   "type": "module"
 }

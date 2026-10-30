@@ -1,7 +1,11 @@
 import type { NextFunction, Request, Response } from 'express';
 
 import { toOrderResponse } from '../mappers/order.mapper.js';
-import { createOrder, getOrderById, listOrders } from '../services/order.service.js';
+import {
+  createOrder,
+  getOrderById,
+  listOrders,
+} from '../services/order.service.js';
 import {
   parseCreateOrder,
   parseOrderFilters,

@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "campaignId": "prisma-create-order-baseline-50vus-1793126433595",
+  "status": "passed",
+  "startedAt": "2026-10-27T18:40:33.595Z",
+  "completedAt": "2026-10-27T18:59:33.506Z",
+  "plan": {
+    "endpoint": "create-order",
+    "implementation": "prisma",
+    "baseUrl": "http://localhost:3003",
+    "profile": "baseline",
+    "vus": 50,
+    "duration": "3m",
+    "repetitions": 5,
+    "warmup": "1m",
+    "resetWrites": true,
+    "dryRun": false,
+    "writes": true,
+    "plannedRuns": 6,
+    "plannedDurationSeconds": 960,
+    "note": "Database reset/load/write preparation occurs before warm-up and every measurement."
+  },
+  "runs": [
+    {
+      "runId": "prisma-create-order-baseline-50vus-1793126433595-warmup",
+      "phase": "warmup",
+      "round": null,
+      "duration": "1m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\prisma\\campaign-prisma-create-order-baseline-50vus-1793126433595\\fixtures-warmup.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T18:40:33.597Z",
+      "completedAt": "2026-10-27T18:42:05.276Z"
+    },
+    {
+      "runId": "prisma-create-order-baseline-50vus-1793126433595-round-01",
+      "phase": "measurement",
+      "round": 1,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\prisma\\campaign-prisma-create-order-baseline-50vus-1793126433595\\fixtures-round-01.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T18:42:05.278Z",
+      "completedAt": "2026-10-27T18:45:32.984Z"
+    },
+    {
+      "runId": "prisma-create-order-baseline-50vus-1793126433595-round-02",
+      "phase": "measurement",
+      "round": 2,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\prisma\\campaign-prisma-create-order-baseline-50vus-1793126433595\\fixtures-round-02.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T18:45:32.985Z",
+      "completedAt": "2026-10-27T18:49:05.766Z"
+    },
+    {
+      "runId": "prisma-create-order-baseline-50vus-1793126433595-round-03",
+      "phase": "measurement",
+      "round": 3,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\prisma\\campaign-prisma-create-order-baseline-50vus-1793126433595\\fixtures-round-03.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T18:49:05.767Z",
+      "completedAt": "2026-10-27T18:52:33.549Z"
+    },
+    {
+      "runId": "prisma-create-order-baseline-50vus-1793126433595-round-04",
+      "phase": "measurement",
+      "round": 4,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\prisma\\campaign-prisma-create-order-baseline-50vus-1793126433595\\fixtures-round-04.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T18:52:33.550Z",
+      "completedAt": "2026-10-27T18:56:05.842Z"
+    },
+    {
+      "runId": "prisma-create-order-baseline-50vus-1793126433595-round-05",
+      "phase": "measurement",
+      "round": 5,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\prisma\\campaign-prisma-create-order-baseline-50vus-1793126433595\\fixtures-round-05.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T18:56:05.843Z",
+      "completedAt": "2026-10-27T18:59:33.505Z"
+    }
+  ]
+}

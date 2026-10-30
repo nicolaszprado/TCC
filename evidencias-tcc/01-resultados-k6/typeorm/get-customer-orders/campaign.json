@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "campaignId": "typeorm-get-customer-orders-baseline-50vus-1793053891707",
+  "status": "passed",
+  "startedAt": "2026-10-26T22:31:31.707Z",
+  "completedAt": "2026-10-26T22:48:17.738Z",
+  "plan": {
+    "endpoint": "get-customer-orders",
+    "implementation": "typeorm",
+    "baseUrl": "http://localhost:3002",
+    "profile": "baseline",
+    "vus": 50,
+    "duration": "3m",
+    "repetitions": 5,
+    "warmup": "1m",
+    "resetWrites": false,
+    "dryRun": false,
+    "writes": false,
+    "plannedRuns": 6,
+    "plannedDurationSeconds": 960,
+    "note": "Read fixture is reused; the database is not changed."
+  },
+  "runs": [
+    {
+      "runId": "typeorm-get-customer-orders-baseline-50vus-1793053891707-warmup",
+      "phase": "warmup",
+      "round": null,
+      "duration": "1m",
+      "fixtureFile": null,
+      "status": "passed",
+      "startedAt": "2026-10-26T22:31:31.710Z",
+      "completedAt": "2026-10-26T22:32:39.329Z"
+    },
+    {
+      "runId": "typeorm-get-customer-orders-baseline-50vus-1793053891707-round-01",
+      "phase": "measurement",
+      "round": 1,
+      "duration": "3m",
+      "fixtureFile": null,
+      "status": "passed",
+      "startedAt": "2026-10-26T22:32:39.330Z",
+      "completedAt": "2026-10-26T22:35:47.086Z"
+    },
+    {
+      "runId": "typeorm-get-customer-orders-baseline-50vus-1793053891707-round-02",
+      "phase": "measurement",
+      "round": 2,
+      "duration": "3m",
+      "fixtureFile": null,
+      "status": "passed",
+      "startedAt": "2026-10-26T22:35:47.088Z",
+      "completedAt": "2026-10-26T22:38:54.880Z"
+    },
+    {
+      "runId": "typeorm-get-customer-orders-baseline-50vus-1793053891707-round-03",
+      "phase": "measurement",
+      "round": 3,
+      "duration": "3m",
+      "fixtureFile": null,
+      "status": "passed",
+      "startedAt": "2026-10-26T22:38:54.881Z",
+      "completedAt": "2026-10-26T22:42:02.589Z"
+    },
+    {
+      "runId": "typeorm-get-customer-orders-baseline-50vus-1793053891707-round-04",
+      "phase": "measurement",
+      "round": 4,
+      "duration": "3m",
+      "fixtureFile": null,
+      "status": "passed",
+      "startedAt": "2026-10-26T22:42:02.590Z",
+      "completedAt": "2026-10-26T22:45:10.164Z"
+    },
+    {
+      "runId": "typeorm-get-customer-orders-baseline-50vus-1793053891707-round-05",
+      "phase": "measurement",
+      "round": 5,
+      "duration": "3m",
+      "fixtureFile": null,
+      "status": "passed",
+      "startedAt": "2026-10-26T22:45:10.165Z",
+      "completedAt": "2026-10-26T22:48:17.737Z"
+    }
+  ]
+}

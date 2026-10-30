@@ -2,8 +2,14 @@ import { setTimeout as delay } from 'node:timers/promises';
 
 export const TRANSACTION_ISOLATION_SQL = 'SERIALIZABLE' as const;
 export const TRANSACTION_ISOLATION_PRISMA = 'Serializable' as const;
-export const MAX_TRANSACTION_ATTEMPTS = 3;
+export const MAX_TRANSACTION_ATTEMPTS = 8;
 export const TRANSACTION_RETRY_BACKOFF_MS = 10;
+
+function retryDelayMs(attempt: number): number {
+  const exponentialBackoff = TRANSACTION_RETRY_BACKOFF_MS * (2 ** (attempt - 1));
+  // A proportional jitter prevents aborted transactions from retrying in lockstep.
+  return exponentialBackoff + Math.floor(Math.random() * (exponentialBackoff + 1));
+}
 
 export async function runWithTransactionRetry<T>(
   operation: () => Promise<T>,
@@ -14,7 +20,7 @@ export async function runWithTransactionRetry<T>(
       return await operation();
     } catch (error) {
       if (!isRetryable(error) || attempt === MAX_TRANSACTION_ATTEMPTS) throw error;
-      await delay(TRANSACTION_RETRY_BACKOFF_MS * attempt);
+      await delay(retryDelayMs(attempt));
     }
   }
 

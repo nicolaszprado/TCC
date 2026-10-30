@@ -80,10 +80,12 @@ class TransactionAbort extends Error {
 }
 
 function hasErrorCode(error: unknown, code: string): boolean {
-  return typeof error === 'object'
-    && error !== null
-    && 'code' in error
-    && error.code === code;
+  if (typeof error !== 'object' || error === null) return false;
+
+  if ('code' in error && error.code === code) return true;
+  if ('originalCode' in error && error.originalCode === code) return true;
+
+  return 'cause' in error && hasErrorCode(error.cause, code);
 }
 
 export async function insertOrder(input: CreateOrderInput): Promise<CreateOrderResult> {
@@ -161,7 +163,7 @@ export async function insertOrder(input: CreateOrderInput): Promise<CreateOrderR
       }, {
         isolationLevel: TRANSACTION_ISOLATION_PRISMA,
       }),
-      (error) => hasErrorCode(error, 'P2034'),
+      (error) => hasErrorCode(error, 'P2034') || hasErrorCode(error, '40001'),
     );
   } catch (error) {
     if (error instanceof TransactionAbort) return { kind: error.kind };

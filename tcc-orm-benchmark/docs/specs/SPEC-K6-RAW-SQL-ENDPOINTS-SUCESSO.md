@@ -176,7 +176,7 @@ Smoke de leitura: 1 VU, 10 segundos e `sleep(1)`. Smoke de escrita: 1 VU, 1 iter
 
 Load: VUs e duração fornecidos pela CLI, preservando o formato atual `--vus ... --duration ...`. Uma requisição de negócio por iteração, sem `sleep`, sem retries HTTP e sem chamadas auxiliares no trecho medido. Medir cada perfil em um processo k6 separado.
 
-Sequência por endpoint: smoke, piloto de 10 VUs/1 minuto, 50 VUs/1 minuto e 100 VUs/1 minuto. Somente depois iniciar medições oficiais de 5 minutos com cinco repetições, precedidas por warm-up de 1 minuto. Um minuto é o protocolo inicial; verificar estabilidade no piloto e registrar qualquer ajuste aplicado uniformemente.
+Sequência por endpoint: smoke, piloto de 10 VUs/1 minuto, 50 VUs/1 minuto e 100 VUs/1 minuto. Somente depois iniciar medições oficiais de 3 minutos com cinco repetições, precedidas por warm-up de 1 minuto. Um minuto é o protocolo inicial; verificar estabilidade no piloto e registrar qualquer ajuste aplicado uniformemente.
 
 Regras obrigatórias:
 
@@ -211,7 +211,7 @@ k6 run --vus 10 --duration 1m -e BASE_URL=http://localhost:3001 -e PROFILE=basel
 Exemplo oficial de leitura, após warm-up:
 
 ```powershell
-k6 run --vus 10 --duration 5m --summary-trend-stats="avg,med,p(95),p(99),min,max" --summary-export="tests/k6/results/raw-sql/medium-list-products-baseline-10vus-run-01-summary.json" -e BASE_URL=http://localhost:3001 -e PROFILE=baseline -e RUN_ID=medium-list-products-baseline-10vus-run-01 tests/k6/load/list-products.js
+k6 run --vus 10 --duration 3m --summary-trend-stats="avg,med,p(95),p(99),min,max" --summary-export="tests/k6/results/raw-sql/medium-list-products-baseline-10vus-run-01-summary.json" -e BASE_URL=http://localhost:3001 -e PROFILE=baseline -e RUN_ID=medium-list-products-baseline-10vus-run-01 tests/k6/load/list-products.js
 ```
 
 Exemplo smoke de escrita, após preparação específica:

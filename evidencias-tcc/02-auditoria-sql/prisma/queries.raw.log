@@ -1,0 +1,58 @@
+get /products:
+
+prisma:query SELECT "public"."products"."id", "public"."products"."category_id", "public"."products"."name", "public"."products"."description", "public"."products"."price", "public"."products"."stock", "public"."products"."active", "public"."products"."created_at", "public"."products"."updated_at" FROM "public"."products" WHERE 1=1 ORDER BY "public"."products"."id" ASC LIMIT $1 OFFSET $2
+prisma:query SELECT COUNT(*) AS "_count$_all" FROM (SELECT "public"."products"."id" FROM "public"."products" WHERE 1=1 OFFSET $1) AS "sub"
+
+get products filtrado:
+
+prisma:query SELECT "public"."products"."id", "public"."products"."category_id", "public"."products"."name", "public"."products"."description", "public"."products"."price", "public"."products"."stock", "public"."products"."active", "public"."products"."created_at", "public"."products"."updated_at" FROM "public"."products" WHERE ("public"."products"."category_id" = $1 AND "public"."products"."price" >= $2 AND "public"."products"."price" <= $3 AND "public"."products"."active" = $4) ORDER BY "public"."products"."id" ASC LIMIT $5 OFFSET $6
+prisma:query SELECT COUNT(*) AS "_count$_all" FROM (SELECT "public"."products"."id" FROM "public"."products" WHERE ("public"."products"."category_id" = $1 AND "public"."products"."price" >= $2 AND "public"."products"."price" <= $3 AND "public"."products"."active" = $4) OFFSET $5) AS "sub"
+
+get products by id
+
+prisma:query SELECT "public"."products"."id", "public"."products"."category_id", "public"."products"."name", "public"."products"."description", "public"."products"."price", "public"."products"."stock", "public"."products"."active", "public"."products"."created_at", "public"."products"."updated_at" FROM "public"."products" WHERE ("public"."products"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+
+get products details
+
+prisma:query SELECT "public"."products"."id", "public"."products"."category_id", "public"."products"."name", "public"."products"."description", "public"."products"."price", "public"."products"."stock", "public"."products"."active", "public"."products"."created_at", "public"."products"."updated_at" FROM "public"."products" WHERE ("public"."products"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+prisma:query SELECT "public"."product_details"."product_id", "public"."product_details"."weight_kg", "public"."product_details"."width_cm", "public"."product_details"."height_cm", "public"."product_details"."depth_cm", "public"."product_details"."manufacturer", "public"."product_details"."warranty_months" FROM "public"."product_details" WHERE "public"."product_details"."product_id" = $1 OFFSET $2
+
+update product
+
+prisma:query UPDATE "public"."products" SET "stock" = $1, "updated_at" = $2 WHERE ("public"."products"."id" = $3 AND 1=1) RETURNING "public"."products"."id", "public"."products"."category_id", "public"."products"."name", "public"."products"."description", "public"."products"."price", "public"."products"."stock", "public"."products"."active", "public"."products"."created_at", "public"."products"."updated_at"
+
+get orders
+
+prisma:query SELECT "public"."orders"."id", "public"."orders"."status", "public"."orders"."created_at", "public"."orders"."updated_at", "public"."orders"."customer_id" FROM "public"."orders" WHERE 1=1 ORDER BY "public"."orders"."created_at" DESC, "public"."orders"."id" DESC LIMIT $1 OFFSET $2
+prisma:query SELECT COUNT(*) AS "_count$_all" FROM (SELECT "public"."orders"."id" FROM "public"."orders" WHERE 1=1 OFFSET $1) AS "sub"
+prisma:query SELECT "public"."customers"."id", "public"."customers"."name", "public"."customers"."email" FROM "public"."customers" WHERE "public"."customers"."id" IN ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20) OFFSET $21
+prisma:query SELECT "public"."order_items"."id", "public"."order_items"."quantity", "public"."order_items"."unit_price", "public"."order_items"."product_id", "public"."order_items"."order_id" FROM "public"."order_items" WHERE "public"."order_items"."order_id" IN ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20) ORDER BY "public"."order_items"."id" ASC OFFSET $21
+prisma:query SELECT "public"."products"."id", "public"."products"."name" FROM "public"."products" WHERE "public"."products"."id" IN ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40,$41,$42,$43,$44,$45,$46,$47,$48,$49,$50,$51,$52,$53,$54,$55,$56,$57,$58,$59,$60,$61,$62,$63,$64,$65,$66,$67,$68,$69,$70,$71,$72,$73,$74,$75) OFFSET $76
+
+get order by id
+
+prisma:query SELECT "public"."orders"."id", "public"."orders"."status", "public"."orders"."created_at", "public"."orders"."updated_at", "public"."orders"."customer_id" FROM "public"."orders" WHERE ("public"."orders"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+prisma:query SELECT "public"."customers"."id", "public"."customers"."name", "public"."customers"."email" FROM "public"."customers" WHERE "public"."customers"."id" = $1 OFFSET $2
+prisma:query SELECT "public"."order_items"."id", "public"."order_items"."quantity", "public"."order_items"."unit_price", "public"."order_items"."product_id", "public"."order_items"."order_id" FROM "public"."order_items" WHERE "public"."order_items"."order_id" = $1 ORDER BY "public"."order_items"."id" ASC OFFSET $2
+prisma:query SELECT "public"."products"."id", "public"."products"."name" FROM "public"."products" WHERE "public"."products"."id" IN ($1,$2) OFFSET $3
+
+
+post orders
+
+prisma:query SELECT "public"."customers"."id" FROM "public"."customers" WHERE ("public"."customers"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+prisma:query SELECT "public"."products"."id", "public"."products"."price", "public"."products"."stock", "public"."products"."active" FROM "public"."products" WHERE "public"."products"."id" IN ($1) ORDER BY "public"."products"."id" ASC OFFSET $2
+prisma:query INSERT INTO "public"."orders" ("customer_id","status","created_at","updated_at") VALUES ($1,$2,$3,$4) RETURNING "public"."orders"."id"
+prisma:query INSERT INTO "public"."order_items" ("order_id","product_id","quantity","unit_price") VALUES ($1,$2,$3,$4) RETURNING "public"."order_items"."id"
+prisma:query SELECT "public"."orders"."id", "public"."orders"."status", "public"."orders"."created_at", "public"."orders"."updated_at", "public"."orders"."customer_id" FROM "public"."orders" WHERE "public"."orders"."id" = $1 LIMIT $2 OFFSET $3
+prisma:query SELECT "public"."customers"."id", "public"."customers"."name", "public"."customers"."email" FROM "public"."customers" WHERE "public"."customers"."id" = $1 OFFSET $2
+prisma:query SELECT "public"."order_items"."id", "public"."order_items"."quantity", "public"."order_items"."unit_price", "public"."order_items"."product_id", "public"."order_items"."order_id" FROM "public"."order_items" WHERE "public"."order_items"."order_id" = $1 ORDER BY "public"."order_items"."id" ASC OFFSET $2
+prisma:query SELECT "public"."products"."id", "public"."products"."name" FROM "public"."products" WHERE "public"."products"."id" IN ($1) OFFSET $2
+prisma:query UPDATE "public"."products" SET "stock" = ("public"."products"."stock" - $1), "updated_at" = $2 WHERE ("public"."products"."id" = $3 AND "public"."products"."active" = $4 AND "public"."products"."stock" >= $5)
+prisma:query COMMIT
+
+
+get customer orders
+
+prisma:query SELECT "public"."customers"."id", "public"."customers"."name", "public"."customers"."email", "public"."customers"."created_at" FROM "public"."customers" WHERE ("public"."customers"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+prisma:query SELECT COUNT(*) AS "_count$_all" FROM (SELECT "public"."orders"."id" FROM "public"."orders" WHERE "public"."orders"."customer_id" = $1 OFFSET $2) AS "sub"
+prisma:query SELECT "public"."orders"."id", "public"."orders"."customer_id", "public"."orders"."status", "public"."orders"."created_at", "public"."orders"."updated_at" FROM "public"."orders" WHERE "public"."orders"."customer_id" = $1 ORDER BY "public"."orders"."created_at" DESC, "public"."orders"."id" DESC LIMIT $2 OFFSET $3

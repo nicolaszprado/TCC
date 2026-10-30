@@ -411,7 +411,7 @@ Exemplo:
 ```powershell
 k6 run `
   --vus 50 `
-  --duration 5m `
+  --duration 3m `
   --summary-trend-stats="avg,med,p(95),p(99),min,max" `
   --summary-export="tests/k6/results/raw-sql/get-product-by-id-50vus-run-01.json" `
   -e BASE_URL=http://localhost:3001 `
@@ -508,7 +508,7 @@ Uma estratégia inicial poderá utilizar:
 ```text
 1 minuto de warm-up
 +
-5 minutos de medição
+3 minutos de medição
 ```
 
 Essa configuração poderá ser refinada posteriormente.

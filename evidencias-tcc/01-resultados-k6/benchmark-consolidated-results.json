@@ -1,0 +1,253 @@
+{
+  "title": "Índice consolidado — benchmarks K6 do TCC",
+  "scope": {
+    "campaigns": 24,
+    "virtual_users": 50,
+    "warmup": "1m",
+    "measurement_rounds": 5,
+    "measurement_duration_per_round": "3m",
+    "official_profile": "baseline"
+  },
+  "campaigns": [
+    {
+      "endpoint": "POST /orders",
+      "endpoint_id": "create-order",
+      "implementation": "prisma",
+      "campaign_id": "prisma-create-order-baseline-50vus-1793126433595",
+      "requests_per_second_mean": 758.95,
+      "http_request_duration_p95_mean_ms": 70.86,
+      "http_request_failure_rate": 0,
+      "summary_file": "prisma/create-order/campaign-summary.json"
+    },
+    {
+      "endpoint": "POST /orders",
+      "endpoint_id": "create-order",
+      "implementation": "raw-sql",
+      "campaign_id": "raw-sql-create-order-baseline-50vus-1793128109989",
+      "requests_per_second_mean": 2216.5,
+      "http_request_duration_p95_mean_ms": 24.99,
+      "http_request_failure_rate": 0,
+      "summary_file": "raw-sql/create-order/campaign-summary.json"
+    },
+    {
+      "endpoint": "POST /orders",
+      "endpoint_id": "create-order",
+      "implementation": "typeorm",
+      "campaign_id": "typeorm-create-order-baseline-50vus-1793129358511",
+      "requests_per_second_mean": 1222.94,
+      "http_request_duration_p95_mean_ms": 44.54,
+      "http_request_failure_rate": 0,
+      "summary_file": "typeorm/create-order/campaign-summary.json"
+    },
+    {
+      "endpoint": "GET /customers/:id/orders",
+      "endpoint_id": "get-customer-orders",
+      "implementation": "prisma",
+      "campaign_id": "prisma-get-customer-orders-baseline-50vus-1793050803645",
+      "requests_per_second_mean": 1817.7,
+      "http_request_duration_p95_mean_ms": 30.96,
+      "http_request_failure_rate": 0,
+      "summary_file": "prisma/get-customer-orders/campaign-summary.json"
+    },
+    {
+      "endpoint": "GET /customers/:id/orders",
+      "endpoint_id": "get-customer-orders",
+      "implementation": "raw-sql",
+      "campaign_id": "raw-sql-get-customer-orders-baseline-50vus-1793052179590",
+      "requests_per_second_mean": 4039.09,
+      "http_request_duration_p95_mean_ms": 13.84,
+      "http_request_failure_rate": 0,
+      "summary_file": "raw-sql/get-customer-orders/campaign-summary.json"
+    },
+    {
+      "endpoint": "GET /customers/:id/orders",
+      "endpoint_id": "get-customer-orders",
+      "implementation": "typeorm",
+      "campaign_id": "typeorm-get-customer-orders-baseline-50vus-1793053891707",
+      "requests_per_second_mean": 2276.5,
+      "http_request_duration_p95_mean_ms": 24.85,
+      "http_request_failure_rate": 0,
+      "summary_file": "typeorm/get-customer-orders/campaign-summary.json"
+    },
+    {
+      "endpoint": "GET /orders/:id",
+      "endpoint_id": "get-order-by-id",
+      "implementation": "prisma",
+      "campaign_id": "prisma-get-order-by-id-baseline-50vus-1793057379398",
+      "requests_per_second_mean": 1776.37,
+      "http_request_duration_p95_mean_ms": 31.14,
+      "http_request_failure_rate": 0,
+      "summary_file": "prisma/get-order-by-id/campaign-summary.json"
+    },
+    {
+      "endpoint": "GET /orders/:id",
+      "endpoint_id": "get-order-by-id",
+      "implementation": "raw-sql",
+      "campaign_id": "raw-sql-get-order-by-id-baseline-50vus-1793055948865",
+      "requests_per_second_mean": 4808.32,
+      "http_request_duration_p95_mean_ms": 13.22,
+      "http_request_failure_rate": 0,
+      "summary_file": "raw-sql/get-order-by-id/campaign-summary.json"
+    },
+    {
+      "endpoint": "GET /orders/:id",
+      "endpoint_id": "get-order-by-id",
+      "implementation": "typeorm",
+      "campaign_id": "typeorm-get-order-by-id-baseline-50vus-1793058418828",
+      "requests_per_second_mean": 2708.19,
+      "http_request_duration_p95_mean_ms": 20.92,
+      "http_request_failure_rate": 0,
+      "summary_file": "typeorm/get-order-by-id/campaign-summary.json"
+    },
+    {
+      "endpoint": "GET /products/:id",
+      "endpoint_id": "get-product-by-id",
+      "implementation": "prisma",
+      "campaign_id": "prisma-get-product-by-id-baseline-50vus-1793039637162",
+      "requests_per_second_mean": 2482.07,
+      "http_request_duration_p95_mean_ms": 34.34,
+      "http_request_failure_rate": 0,
+      "summary_file": "prisma/get-product-by-id/campaign-summary.json"
+    },
+    {
+      "endpoint": "GET /products/:id",
+      "endpoint_id": "get-product-by-id",
+      "implementation": "raw-sql",
+      "campaign_id": "raw-sql-get-product-by-id-baseline-50vus-1793036513534",
+      "requests_per_second_mean": 5410.05,
+      "http_request_duration_p95_mean_ms": 15.24,
+      "http_request_failure_rate": 0,
+      "summary_file": "raw-sql/get-product-by-id/campaign-summary.json"
+    },
+    {
+      "endpoint": "GET /products/:id",
+      "endpoint_id": "get-product-by-id",
+      "implementation": "typeorm",
+      "campaign_id": "typeorm-get-product-by-id-baseline-50vus-1793038393756",
+      "requests_per_second_mean": 2592.21,
+      "http_request_duration_p95_mean_ms": 32.59,
+      "http_request_failure_rate": 0,
+      "summary_file": "typeorm/get-product-by-id/campaign-summary.json"
+    },
+    {
+      "endpoint": "GET /products/:id/details",
+      "endpoint_id": "get-product-details",
+      "implementation": "prisma",
+      "campaign_id": "prisma-get-product-details-baseline-50vus-1793043596925",
+      "requests_per_second_mean": 2442.62,
+      "http_request_duration_p95_mean_ms": 23.6,
+      "http_request_failure_rate": 0,
+      "summary_file": "prisma/get-product-details/campaign-summary.json"
+    },
+    {
+      "endpoint": "GET /products/:id/details",
+      "endpoint_id": "get-product-details",
+      "implementation": "raw-sql",
+      "campaign_id": "raw-sql-get-product-details-baseline-50vus-1793042447418",
+      "requests_per_second_mean": 5570.51,
+      "http_request_duration_p95_mean_ms": 10.35,
+      "http_request_failure_rate": 0,
+      "summary_file": "raw-sql/get-product-details/campaign-summary.json"
+    },
+    {
+      "endpoint": "GET /products/:id/details",
+      "endpoint_id": "get-product-details",
+      "implementation": "typeorm",
+      "campaign_id": "typeorm-get-product-details-baseline-50vus-1793044646094",
+      "requests_per_second_mean": 3319.96,
+      "http_request_duration_p95_mean_ms": 17,
+      "http_request_failure_rate": 0,
+      "summary_file": "typeorm/get-product-details/campaign-summary.json"
+    },
+    {
+      "endpoint": "GET /orders",
+      "endpoint_id": "list-orders",
+      "implementation": "prisma",
+      "campaign_id": "prisma-list-orders-baseline-50vus-1793123115245",
+      "requests_per_second_mean": 851.69,
+      "http_request_duration_p95_mean_ms": 64.63,
+      "http_request_failure_rate": 0,
+      "summary_file": "prisma/list-orders/campaign-summary.json"
+    },
+    {
+      "endpoint": "GET /orders",
+      "endpoint_id": "list-orders",
+      "implementation": "raw-sql",
+      "campaign_id": "raw-sql-list-orders-baseline-50vus-1793120947232",
+      "requests_per_second_mean": 970.63,
+      "http_request_duration_p95_mean_ms": 72.16,
+      "http_request_failure_rate": 0,
+      "summary_file": "raw-sql/list-orders/campaign-summary.json"
+    },
+    {
+      "endpoint": "GET /orders",
+      "endpoint_id": "list-orders",
+      "implementation": "typeorm",
+      "campaign_id": "typeorm-list-orders-baseline-50vus-1793122020428",
+      "requests_per_second_mean": 853.77,
+      "http_request_duration_p95_mean_ms": 75.94,
+      "http_request_failure_rate": 0,
+      "summary_file": "typeorm/list-orders/campaign-summary.json"
+    },
+    {
+      "endpoint": "GET /products",
+      "endpoint_id": "list-products",
+      "implementation": "prisma",
+      "campaign_id": "prisma-list-products-baseline-50vus-1793049439451",
+      "requests_per_second_mean": 276.31,
+      "http_request_duration_p95_mean_ms": 234.06,
+      "http_request_failure_rate": 0,
+      "summary_file": "prisma/list-products/campaign-summary.json"
+    },
+    {
+      "endpoint": "GET /products",
+      "endpoint_id": "list-products",
+      "implementation": "raw-sql",
+      "campaign_id": "raw-sql-list-products-baseline-50vus-1793047014589",
+      "requests_per_second_mean": 392.26,
+      "http_request_duration_p95_mean_ms": 161.2,
+      "http_request_failure_rate": 0,
+      "summary_file": "raw-sql/list-products/campaign-summary.json"
+    },
+    {
+      "endpoint": "GET /products",
+      "endpoint_id": "list-products",
+      "implementation": "typeorm",
+      "campaign_id": "typeorm-list-products-baseline-50vus-1793048107868",
+      "requests_per_second_mean": 375.71,
+      "http_request_duration_p95_mean_ms": 166.3,
+      "http_request_failure_rate": 0,
+      "summary_file": "typeorm/list-products/campaign-summary.json"
+    },
+    {
+      "endpoint": "PATCH /products/:id/stock",
+      "endpoint_id": "update-product-stock",
+      "implementation": "prisma",
+      "campaign_id": "prisma-update-product-stock-baseline-50vus-1793134130070",
+      "requests_per_second_mean": 2554.2,
+      "http_request_duration_p95_mean_ms": 21.69,
+      "http_request_failure_rate": 0,
+      "summary_file": "prisma/update-product-stock/campaign-summary.json"
+    },
+    {
+      "endpoint": "PATCH /products/:id/stock",
+      "endpoint_id": "update-product-stock",
+      "implementation": "raw-sql",
+      "campaign_id": "raw-sql-update-product-stock-baseline-50vus-1793131189857",
+      "requests_per_second_mean": 4885.24,
+      "http_request_duration_p95_mean_ms": 11.96,
+      "http_request_failure_rate": 0,
+      "summary_file": "raw-sql/update-product-stock/campaign-summary.json"
+    },
+    {
+      "endpoint": "PATCH /products/:id/stock",
+      "endpoint_id": "update-product-stock",
+      "implementation": "typeorm",
+      "campaign_id": "typeorm-update-product-stock-baseline-50vus-1793132628652",
+      "requests_per_second_mean": 3516.97,
+      "http_request_duration_p95_mean_ms": 16.6,
+      "http_request_failure_rate": 0,
+      "summary_file": "typeorm/update-product-stock/campaign-summary.json"
+    }
+  ]
+}

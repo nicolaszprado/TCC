@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "campaignId": "raw-sql-get-order-by-id-baseline-50vus-1793055948865",
+  "status": "passed",
+  "startedAt": "2026-10-26T23:05:48.866Z",
+  "completedAt": "2026-10-26T23:22:36.413Z",
+  "plan": {
+    "endpoint": "get-order-by-id",
+    "implementation": "raw-sql",
+    "baseUrl": "http://localhost:3001",
+    "profile": "baseline",
+    "vus": 50,
+    "duration": "3m",
+    "repetitions": 5,
+    "warmup": "1m",
+    "resetWrites": false,
+    "dryRun": false,
+    "writes": false,
+    "plannedRuns": 6,
+    "plannedDurationSeconds": 960,
+    "note": "Read fixture is reused; the database is not changed."
+  },
+  "runs": [
+    {
+      "runId": "raw-sql-get-order-by-id-baseline-50vus-1793055948865-warmup",
+      "phase": "warmup",
+      "round": null,
+      "duration": "1m",
+      "fixtureFile": null,
+      "status": "passed",
+      "startedAt": "2026-10-26T23:05:48.868Z",
+      "completedAt": "2026-10-26T23:06:56.835Z"
+    },
+    {
+      "runId": "raw-sql-get-order-by-id-baseline-50vus-1793055948865-round-01",
+      "phase": "measurement",
+      "round": 1,
+      "duration": "3m",
+      "fixtureFile": null,
+      "status": "passed",
+      "startedAt": "2026-10-26T23:06:56.836Z",
+      "completedAt": "2026-10-26T23:10:04.962Z"
+    },
+    {
+      "runId": "raw-sql-get-order-by-id-baseline-50vus-1793055948865-round-02",
+      "phase": "measurement",
+      "round": 2,
+      "duration": "3m",
+      "fixtureFile": null,
+      "status": "passed",
+      "startedAt": "2026-10-26T23:10:04.963Z",
+      "completedAt": "2026-10-26T23:13:12.776Z"
+    },
+    {
+      "runId": "raw-sql-get-order-by-id-baseline-50vus-1793055948865-round-03",
+      "phase": "measurement",
+      "round": 3,
+      "duration": "3m",
+      "fixtureFile": null,
+      "status": "passed",
+      "startedAt": "2026-10-26T23:13:12.777Z",
+      "completedAt": "2026-10-26T23:16:20.590Z"
+    },
+    {
+      "runId": "raw-sql-get-order-by-id-baseline-50vus-1793055948865-round-04",
+      "phase": "measurement",
+      "round": 4,
+      "duration": "3m",
+      "fixtureFile": null,
+      "status": "passed",
+      "startedAt": "2026-10-26T23:16:20.592Z",
+      "completedAt": "2026-10-26T23:19:28.682Z"
+    },
+    {
+      "runId": "raw-sql-get-order-by-id-baseline-50vus-1793055948865-round-05",
+      "phase": "measurement",
+      "round": 5,
+      "duration": "3m",
+      "fixtureFile": null,
+      "status": "passed",
+      "startedAt": "2026-10-26T23:19:28.683Z",
+      "completedAt": "2026-10-26T23:22:36.412Z"
+    }
+  ]
+}

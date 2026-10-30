@@ -141,7 +141,7 @@ de zero indica reprovação; uma falha não deve ser incluída silenciosamente n
 médias. Nenhum runner executa warm-up automaticamente.
 
 Para a medição oficial, prepare o dataset medium (100 mil produtos), faça warm-up
-separado de 1 minuto e então 5 minutos de medição; repita cinco vezes por cenário.
+separado de 1 minuto e então 3 minutos de medição; repita cinco vezes por cenário.
 Não use IDs fixos na campanha oficial. VUs representam concorrência, não req/s
 fixas nem pessoas navegando.
 
@@ -150,12 +150,66 @@ $env:PHASE = "warmup"
 npm run k6:run -- list-products load --vus 10 --duration 1m
 $env:PHASE = "measurement"
 $env:WARMUP_NOTE = "1 minuto, mesmo endpoint/perfil/VUs, imediatamente antes"
-npm run k6:run -- list-products load --vus 10 --duration 5m
+npm run k6:run -- list-products load --vus 10 --duration 3m
 ```
 
 Os artefatos do warm-up ficam separados e não devem entrar nos resultados oficiais.
 Amostragem é determinística por seed/VU/iteração; execuções com durações iguais
 podem fazer quantidades diferentes de requests.
+
+### Campanha automatizada de cinco rodadas
+
+O comando abaixo executa automaticamente um warm-up de 1 minuto e cinco medições
+de 3 minutos. Ele interrompe na primeira falha e cria IDs exclusivos para todas
+as execuções:
+
+```powershell
+npm run k6:campaign -- get-product-by-id --implementation raw-sql --vus 10
+```
+
+Confira o plano sem iniciar API, k6 ou banco:
+
+```powershell
+npm run k6:campaign -- get-product-by-id --implementation raw-sql --vus 10 --dry-run
+```
+
+Os padrões podem ser alterados explicitamente:
+
+```powershell
+npm run k6:campaign -- list-products `
+  --implementation typeorm `
+  --profile filtered `
+  --vus 50 `
+  --warmup 1m `
+  --duration 3m `
+  --repetitions 5
+```
+
+Execute uma campanha separada para cada combinação de endpoint, perfil, VUs e
+implementação. O relatório consolidado fica em
+`tests/k6/results/<implementação>/campaign-*/campaign.json`; os resultados de cada
+rodada continuam em suas pastas normais. O tempo medido padrão é 16 minutos
+(1 minuto de warm-up + 5 × 3 minutos), além da preparação e inicialização.
+
+Para POST/PATCH, o comando restaura e prepara o banco antes do warm-up e de cada
+rodada. Isso exige confirmação explícita e apaga os dados atuais do banco indicado:
+
+```powershell
+$env:ALLOW_WRITES = "true"
+$env:BENCHMARK_DB_CONFIRM = "TCC_STORE_DATABASE"
+$env:MAX_ORDERS_PER_VU = "100000"
+$env:QUANTITY = "1"
+
+npm run k6:campaign -- create-order `
+  --implementation raw-sql `
+  --profile baseline `
+  --vus 10 `
+  --reset-writes
+```
+
+Substitua `BENCHMARK_DB_CONFIRM` pelo `DB_NAME` real. Os CSVs e metadados do
+dataset precisam existir. Após a campanha de escrita, o banco permanece no estado
+da última rodada; execute `db:reset` e `db:load` antes de outro experimento.
 
 ## 4. Preparar POST e PATCH
 

@@ -1,0 +1,88 @@
+{
+  "title": "Auditoria SQL estruturada — TypeORM",
+  "implementation": "typeorm",
+  "audit_mode": "SQL_AUDIT=true",
+  "purpose": "Análise diagnóstica das consultas; não usar como métrica de desempenho.",
+  "source_log": "sqls-results-typeorm.json",
+  "coverage": {
+    "baseline_endpoints_captured": 8,
+    "additional_capture": ["GET /products filtrado"],
+    "missing_only_if_profiles_are_in_scope": ["GET /products paginado", "GET /orders filtrado", "GET /orders paginado"]
+  },
+  "database_mutations": {
+    "occurred": true,
+    "evidence": ["POST /orders criou o pedido 50001.", "PATCH /products/1000/stock definiu o estoque como 100."],
+    "cleanup": "Antes de outro benchmark oficial: npm run db:reset; npm run db:load"
+  },
+  "endpoints": [
+    {
+      "endpoint": "GET /products?page=1&limit=20",
+      "scenario": "baseline",
+      "query_count": 2,
+      "operations": ["COUNT(products)", "SELECT página de products com LIMIT 20 OFFSET 0"],
+      "n_plus_one_detected": false
+    },
+    {
+      "endpoint": "GET /products com filtros",
+      "scenario": "filtered",
+      "query_count": 2,
+      "operations": ["SELECT products por category_id, price BETWEEN e active", "COUNT(products) com os mesmos filtros"],
+      "n_plus_one_detected": false
+    },
+    {
+      "endpoint": "GET /products/1000",
+      "scenario": "baseline",
+      "query_count": 1,
+      "operations": ["SELECT product por id"],
+      "n_plus_one_detected": false
+    },
+    {
+      "endpoint": "GET /products/1000/details",
+      "scenario": "baseline",
+      "query_count": 1,
+      "operations": ["SELECT product com LEFT JOIN product_details"],
+      "joins": ["LEFT JOIN product_details"],
+      "n_plus_one_detected": false
+    },
+    {
+      "endpoint": "PATCH /products/1000/stock",
+      "scenario": "baseline",
+      "query_count": 1,
+      "operations": ["UPDATE products SET stock, updated_at WHERE id RETURNING *"],
+      "n_plus_one_detected": false
+    },
+    {
+      "endpoint": "GET /orders?page=1&limit=20",
+      "scenario": "baseline",
+      "query_count": 2,
+      "operations": ["COUNT(orders)", "SELECT página de orders com customer, items e products"],
+      "joins": ["INNER JOIN customers", "LEFT JOIN order_items", "LEFT JOIN products", "subconsulta para paginação"],
+      "n_plus_one_detected": false
+    },
+    {
+      "endpoint": "GET /orders/1000",
+      "scenario": "baseline",
+      "query_count": 1,
+      "operations": ["SELECT order com customer, items e products"],
+      "joins": ["INNER JOIN customers", "LEFT JOIN order_items", "LEFT JOIN products"],
+      "n_plus_one_detected": false
+    },
+    {
+      "endpoint": "POST /orders",
+      "scenario": "baseline; customerId=1; productId=1; quantity=1",
+      "query_count": 9,
+      "transaction_controls": 3,
+      "business_queries": 6,
+      "operations": ["START TRANSACTION", "SET TRANSACTION ISOLATION LEVEL SERIALIZABLE", "verifica customer", "carrega produto e estoque", "INSERT orders", "INSERT order_items", "UPDATE products decrementando estoque", "carrega pedido criado", "COMMIT"],
+      "n_plus_one_detected": false
+    },
+    {
+      "endpoint": "GET /customers/1/orders?page=1&limit=20",
+      "scenario": "baseline",
+      "query_count": 3,
+      "operations": ["SELECT customer", "COUNT orders por customer_id", "SELECT página de orders por customer_id"],
+      "n_plus_one_detected": false
+    }
+  ],
+  "conclusion": "Não há indício de N+1 nas requisições capturadas. As consultas relacionais usam JOINs explícitos, enquanto paginações usam uma consulta de contagem e outra para os dados. O log SQL integral e os parâmetros permanecem preservados no arquivo fonte."
+}

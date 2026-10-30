@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "campaignId": "typeorm-update-product-stock-baseline-50vus-1793132628652",
+  "status": "passed",
+  "startedAt": "2026-10-27T20:23:48.653Z",
+  "completedAt": "2026-10-27T20:42:40.676Z",
+  "plan": {
+    "endpoint": "update-product-stock",
+    "implementation": "typeorm",
+    "baseUrl": "http://localhost:3002",
+    "profile": "baseline",
+    "vus": 50,
+    "duration": "3m",
+    "repetitions": 5,
+    "warmup": "1m",
+    "resetWrites": true,
+    "dryRun": false,
+    "writes": true,
+    "plannedRuns": 6,
+    "plannedDurationSeconds": 960,
+    "note": "Database reset/load/write preparation occurs before warm-up and every measurement."
+  },
+  "runs": [
+    {
+      "runId": "typeorm-update-product-stock-baseline-50vus-1793132628652-warmup",
+      "phase": "warmup",
+      "round": null,
+      "duration": "1m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\typeorm\\campaign-typeorm-update-product-stock-baseline-50vus-1793132628652\\fixtures-warmup.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T20:23:48.655Z",
+      "completedAt": "2026-10-27T20:25:16.049Z"
+    },
+    {
+      "runId": "typeorm-update-product-stock-baseline-50vus-1793132628652-round-01",
+      "phase": "measurement",
+      "round": 1,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\typeorm\\campaign-typeorm-update-product-stock-baseline-50vus-1793132628652\\fixtures-round-01.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T20:25:16.050Z",
+      "completedAt": "2026-10-27T20:28:43.723Z"
+    },
+    {
+      "runId": "typeorm-update-product-stock-baseline-50vus-1793132628652-round-02",
+      "phase": "measurement",
+      "round": 2,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\typeorm\\campaign-typeorm-update-product-stock-baseline-50vus-1793132628652\\fixtures-round-02.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T20:28:43.724Z",
+      "completedAt": "2026-10-27T20:32:16.284Z"
+    },
+    {
+      "runId": "typeorm-update-product-stock-baseline-50vus-1793132628652-round-03",
+      "phase": "measurement",
+      "round": 3,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\typeorm\\campaign-typeorm-update-product-stock-baseline-50vus-1793132628652\\fixtures-round-03.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T20:32:16.286Z",
+      "completedAt": "2026-10-27T20:35:44.228Z"
+    },
+    {
+      "runId": "typeorm-update-product-stock-baseline-50vus-1793132628652-round-04",
+      "phase": "measurement",
+      "round": 4,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\typeorm\\campaign-typeorm-update-product-stock-baseline-50vus-1793132628652\\fixtures-round-04.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T20:35:44.229Z",
+      "completedAt": "2026-10-27T20:39:12.969Z"
+    },
+    {
+      "runId": "typeorm-update-product-stock-baseline-50vus-1793132628652-round-05",
+      "phase": "measurement",
+      "round": 5,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\typeorm\\campaign-typeorm-update-product-stock-baseline-50vus-1793132628652\\fixtures-round-05.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T20:39:12.970Z",
+      "completedAt": "2026-10-27T20:42:40.675Z"
+    }
+  ]
+}

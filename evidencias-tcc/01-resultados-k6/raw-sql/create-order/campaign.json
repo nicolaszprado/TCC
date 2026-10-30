@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "campaignId": "raw-sql-create-order-baseline-50vus-1793128109989",
+  "status": "passed",
+  "startedAt": "2026-10-27T19:08:29.990Z",
+  "completedAt": "2026-10-27T19:27:28.201Z",
+  "plan": {
+    "endpoint": "create-order",
+    "implementation": "raw-sql",
+    "baseUrl": "http://localhost:3001",
+    "profile": "baseline",
+    "vus": 50,
+    "duration": "3m",
+    "repetitions": 5,
+    "warmup": "1m",
+    "resetWrites": true,
+    "dryRun": false,
+    "writes": true,
+    "plannedRuns": 6,
+    "plannedDurationSeconds": 960,
+    "note": "Database reset/load/write preparation occurs before warm-up and every measurement."
+  },
+  "runs": [
+    {
+      "runId": "raw-sql-create-order-baseline-50vus-1793128109989-warmup",
+      "phase": "warmup",
+      "round": null,
+      "duration": "1m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\raw-sql\\campaign-raw-sql-create-order-baseline-50vus-1793128109989\\fixtures-warmup.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T19:08:29.992Z",
+      "completedAt": "2026-10-27T19:09:57.753Z"
+    },
+    {
+      "runId": "raw-sql-create-order-baseline-50vus-1793128109989-round-01",
+      "phase": "measurement",
+      "round": 1,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\raw-sql\\campaign-raw-sql-create-order-baseline-50vus-1793128109989\\fixtures-round-01.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T19:09:57.754Z",
+      "completedAt": "2026-10-27T19:13:26.252Z"
+    },
+    {
+      "runId": "raw-sql-create-order-baseline-50vus-1793128109989-round-02",
+      "phase": "measurement",
+      "round": 2,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\raw-sql\\campaign-raw-sql-create-order-baseline-50vus-1793128109989\\fixtures-round-02.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T19:13:26.254Z",
+      "completedAt": "2026-10-27T19:16:59.150Z"
+    },
+    {
+      "runId": "raw-sql-create-order-baseline-50vus-1793128109989-round-03",
+      "phase": "measurement",
+      "round": 3,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\raw-sql\\campaign-raw-sql-create-order-baseline-50vus-1793128109989\\fixtures-round-03.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T19:16:59.151Z",
+      "completedAt": "2026-10-27T19:20:27.942Z"
+    },
+    {
+      "runId": "raw-sql-create-order-baseline-50vus-1793128109989-round-04",
+      "phase": "measurement",
+      "round": 4,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\raw-sql\\campaign-raw-sql-create-order-baseline-50vus-1793128109989\\fixtures-round-04.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T19:20:27.944Z",
+      "completedAt": "2026-10-27T19:24:00.648Z"
+    },
+    {
+      "runId": "raw-sql-create-order-baseline-50vus-1793128109989-round-05",
+      "phase": "measurement",
+      "round": 5,
+      "duration": "3m",
+      "fixtureFile": "C:\\Users\\nicol\\OneDrive\\Desktop\\TCC-NicolasPrado\\tcc-orm-benchmark\\tests\\k6\\results\\raw-sql\\campaign-raw-sql-create-order-baseline-50vus-1793128109989\\fixtures-round-05.json",
+      "status": "passed",
+      "startedAt": "2026-10-27T19:24:00.648Z",
+      "completedAt": "2026-10-27T19:27:28.200Z"
+    }
+  ]
+}

@@ -1,0 +1,426 @@
+{
+  "title": "Resultados k6 — caracterização dos experimentos, desempenho por endpoint e estabilidade",
+  "generatedAtUtc": "2026-10-30T18:45:55.295Z",
+  "inclusionCriteria": "Somente campanhas aprovadas, com cinco rodadas oficiais de medição.",
+  "excludedArtifacts": [
+    "warm-up summaries",
+    "fixtures",
+    "logs",
+    "metadata",
+    "exit files",
+    "campaigns failed or incomplete"
+  ],
+  "officialProfilesDetected": [
+    "baseline"
+  ],
+  "campaigns": [
+    {
+      "implementation": "prisma",
+      "endpoint": "create-order",
+      "profile": "baseline",
+      "virtualUsers": 50,
+      "warmup": "1m",
+      "measurementRounds": 5,
+      "measurementDurationPerRound": "3m",
+      "files": [
+        "prisma/create-order/campaign.json",
+        "prisma/create-order/round-01-summary.json",
+        "prisma/create-order/round-02-summary.json",
+        "prisma/create-order/round-03-summary.json",
+        "prisma/create-order/round-04-summary.json",
+        "prisma/create-order/round-05-summary.json"
+      ]
+    },
+    {
+      "implementation": "raw-sql",
+      "endpoint": "create-order",
+      "profile": "baseline",
+      "virtualUsers": 50,
+      "warmup": "1m",
+      "measurementRounds": 5,
+      "measurementDurationPerRound": "3m",
+      "files": [
+        "raw-sql/create-order/campaign.json",
+        "raw-sql/create-order/round-01-summary.json",
+        "raw-sql/create-order/round-02-summary.json",
+        "raw-sql/create-order/round-03-summary.json",
+        "raw-sql/create-order/round-04-summary.json",
+        "raw-sql/create-order/round-05-summary.json"
+      ]
+    },
+    {
+      "implementation": "typeorm",
+      "endpoint": "create-order",
+      "profile": "baseline",
+      "virtualUsers": 50,
+      "warmup": "1m",
+      "measurementRounds": 5,
+      "measurementDurationPerRound": "3m",
+      "files": [
+        "typeorm/create-order/campaign.json",
+        "typeorm/create-order/round-01-summary.json",
+        "typeorm/create-order/round-02-summary.json",
+        "typeorm/create-order/round-03-summary.json",
+        "typeorm/create-order/round-04-summary.json",
+        "typeorm/create-order/round-05-summary.json"
+      ]
+    },
+    {
+      "implementation": "prisma",
+      "endpoint": "get-customer-orders",
+      "profile": "baseline",
+      "virtualUsers": 50,
+      "warmup": "1m",
+      "measurementRounds": 5,
+      "measurementDurationPerRound": "3m",
+      "files": [
+        "prisma/get-customer-orders/campaign.json",
+        "prisma/get-customer-orders/round-01-summary.json",
+        "prisma/get-customer-orders/round-02-summary.json",
+        "prisma/get-customer-orders/round-03-summary.json",
+        "prisma/get-customer-orders/round-04-summary.json",
+        "prisma/get-customer-orders/round-05-summary.json"
+      ]
+    },
+    {
+      "implementation": "raw-sql",
+      "endpoint": "get-customer-orders",
+      "profile": "baseline",
+      "virtualUsers": 50,
+      "warmup": "1m",
+      "measurementRounds": 5,
+      "measurementDurationPerRound": "3m",
+      "files": [
+        "raw-sql/get-customer-orders/campaign.json",
+        "raw-sql/get-customer-orders/round-01-summary.json",
+        "raw-sql/get-customer-orders/round-02-summary.json",
+        "raw-sql/get-customer-orders/round-03-summary.json",
+        "raw-sql/get-customer-orders/round-04-summary.json",
+        "raw-sql/get-customer-orders/round-05-summary.json"
+      ]
+    },
+    {
+      "implementation": "typeorm",
+      "endpoint": "get-customer-orders",
+      "profile": "baseline",
+      "virtualUsers": 50,
+      "warmup": "1m",
+      "measurementRounds": 5,
+      "measurementDurationPerRound": "3m",
+      "files": [
+        "typeorm/get-customer-orders/campaign.json",
+        "typeorm/get-customer-orders/round-01-summary.json",
+        "typeorm/get-customer-orders/round-02-summary.json",
+        "typeorm/get-customer-orders/round-03-summary.json",
+        "typeorm/get-customer-orders/round-04-summary.json",
+        "typeorm/get-customer-orders/round-05-summary.json"
+      ]
+    },
+    {
+      "implementation": "prisma",
+      "endpoint": "get-order-by-id",
+      "profile": "baseline",
+      "virtualUsers": 50,
+      "warmup": "1m",
+      "measurementRounds": 5,
+      "measurementDurationPerRound": "3m",
+      "files": [
+        "prisma/get-order-by-id/campaign.json",
+        "prisma/get-order-by-id/round-01-summary.json",
+        "prisma/get-order-by-id/round-02-summary.json",
+        "prisma/get-order-by-id/round-03-summary.json",
+        "prisma/get-order-by-id/round-04-summary.json",
+        "prisma/get-order-by-id/round-05-summary.json"
+      ]
+    },
+    {
+      "implementation": "raw-sql",
+      "endpoint": "get-order-by-id",
+      "profile": "baseline",
+      "virtualUsers": 50,
+      "warmup": "1m",
+      "measurementRounds": 5,
+      "measurementDurationPerRound": "3m",
+      "files": [
+        "raw-sql/get-order-by-id/campaign.json",
+        "raw-sql/get-order-by-id/round-01-summary.json",
+        "raw-sql/get-order-by-id/round-02-summary.json",
+        "raw-sql/get-order-by-id/round-03-summary.json",
+        "raw-sql/get-order-by-id/round-04-summary.json",
+        "raw-sql/get-order-by-id/round-05-summary.json"
+      ]
+    },
+    {
+      "implementation": "typeorm",
+      "endpoint": "get-order-by-id",
+      "profile": "baseline",
+      "virtualUsers": 50,
+      "warmup": "1m",
+      "measurementRounds": 5,
+      "measurementDurationPerRound": "3m",
+      "files": [
+        "typeorm/get-order-by-id/campaign.json",
+        "typeorm/get-order-by-id/round-01-summary.json",
+        "typeorm/get-order-by-id/round-02-summary.json",
+        "typeorm/get-order-by-id/round-03-summary.json",
+        "typeorm/get-order-by-id/round-04-summary.json",
+        "typeorm/get-order-by-id/round-05-summary.json"
+      ]
+    },
+    {
+      "implementation": "prisma",
+      "endpoint": "get-product-by-id",
+      "profile": "baseline",
+      "virtualUsers": 50,
+      "warmup": "1m",
+      "measurementRounds": 5,
+      "measurementDurationPerRound": "3m",
+      "files": [
+        "prisma/get-product-by-id/campaign.json",
+        "prisma/get-product-by-id/round-01-summary.json",
+        "prisma/get-product-by-id/round-02-summary.json",
+        "prisma/get-product-by-id/round-03-summary.json",
+        "prisma/get-product-by-id/round-04-summary.json",
+        "prisma/get-product-by-id/round-05-summary.json"
+      ]
+    },
+    {
+      "implementation": "raw-sql",
+      "endpoint": "get-product-by-id",
+      "profile": "baseline",
+      "virtualUsers": 50,
+      "warmup": "1m",
+      "measurementRounds": 5,
+      "measurementDurationPerRound": "3m",
+      "files": [
+        "raw-sql/get-product-by-id/campaign.json",
+        "raw-sql/get-product-by-id/round-01-summary.json",
+        "raw-sql/get-product-by-id/round-02-summary.json",
+        "raw-sql/get-product-by-id/round-03-summary.json",
+        "raw-sql/get-product-by-id/round-04-summary.json",
+        "raw-sql/get-product-by-id/round-05-summary.json"
+      ]
+    },
+    {
+      "implementation": "typeorm",
+      "endpoint": "get-product-by-id",
+      "profile": "baseline",
+      "virtualUsers": 50,
+      "warmup": "1m",
+      "measurementRounds": 5,
+      "measurementDurationPerRound": "3m",
+      "files": [
+        "typeorm/get-product-by-id/campaign.json",
+        "typeorm/get-product-by-id/round-01-summary.json",
+        "typeorm/get-product-by-id/round-02-summary.json",
+        "typeorm/get-product-by-id/round-03-summary.json",
+        "typeorm/get-product-by-id/round-04-summary.json",
+        "typeorm/get-product-by-id/round-05-summary.json"
+      ]
+    },
+    {
+      "implementation": "prisma",
+      "endpoint": "get-product-details",
+      "profile": "baseline",
+      "virtualUsers": 50,
+      "warmup": "1m",
+      "measurementRounds": 5,
+      "measurementDurationPerRound": "3m",
+      "files": [
+        "prisma/get-product-details/campaign.json",
+        "prisma/get-product-details/round-01-summary.json",
+        "prisma/get-product-details/round-02-summary.json",
+        "prisma/get-product-details/round-03-summary.json",
+        "prisma/get-product-details/round-04-summary.json",
+        "prisma/get-product-details/round-05-summary.json"
+      ]
+    },
+    {
+      "implementation": "raw-sql",
+      "endpoint": "get-product-details",
+      "profile": "baseline",
+      "virtualUsers": 50,
+      "warmup": "1m",
+      "measurementRounds": 5,
+      "measurementDurationPerRound": "3m",
+      "files": [
+        "raw-sql/get-product-details/campaign.json",
+        "raw-sql/get-product-details/round-01-summary.json",
+        "raw-sql/get-product-details/round-02-summary.json",
+        "raw-sql/get-product-details/round-03-summary.json",
+        "raw-sql/get-product-details/round-04-summary.json",
+        "raw-sql/get-product-details/round-05-summary.json"
+      ]
+    },
+    {
+      "implementation": "typeorm",
+      "endpoint": "get-product-details",
+      "profile": "baseline",
+      "virtualUsers": 50,
+      "warmup": "1m",
+      "measurementRounds": 5,
+      "measurementDurationPerRound": "3m",
+      "files": [
+        "typeorm/get-product-details/campaign.json",
+        "typeorm/get-product-details/round-01-summary.json",
+        "typeorm/get-product-details/round-02-summary.json",
+        "typeorm/get-product-details/round-03-summary.json",
+        "typeorm/get-product-details/round-04-summary.json",
+        "typeorm/get-product-details/round-05-summary.json"
+      ]
+    },
+    {
+      "implementation": "prisma",
+      "endpoint": "list-orders",
+      "profile": "baseline",
+      "virtualUsers": 50,
+      "warmup": "1m",
+      "measurementRounds": 5,
+      "measurementDurationPerRound": "3m",
+      "files": [
+        "prisma/list-orders/campaign.json",
+        "prisma/list-orders/round-01-summary.json",
+        "prisma/list-orders/round-02-summary.json",
+        "prisma/list-orders/round-03-summary.json",
+        "prisma/list-orders/round-04-summary.json",
+        "prisma/list-orders/round-05-summary.json"
+      ]
+    },
+    {
+      "implementation": "raw-sql",
+      "endpoint": "list-orders",
+      "profile": "baseline",
+      "virtualUsers": 50,
+      "warmup": "1m",
+      "measurementRounds": 5,
+      "measurementDurationPerRound": "3m",
+      "files": [
+        "raw-sql/list-orders/campaign.json",
+        "raw-sql/list-orders/round-01-summary.json",
+        "raw-sql/list-orders/round-02-summary.json",
+        "raw-sql/list-orders/round-03-summary.json",
+        "raw-sql/list-orders/round-04-summary.json",
+        "raw-sql/list-orders/round-05-summary.json"
+      ]
+    },
+    {
+      "implementation": "typeorm",
+      "endpoint": "list-orders",
+      "profile": "baseline",
+      "virtualUsers": 50,
+      "warmup": "1m",
+      "measurementRounds": 5,
+      "measurementDurationPerRound": "3m",
+      "files": [
+        "typeorm/list-orders/campaign.json",
+        "typeorm/list-orders/round-01-summary.json",
+        "typeorm/list-orders/round-02-summary.json",
+        "typeorm/list-orders/round-03-summary.json",
+        "typeorm/list-orders/round-04-summary.json",
+        "typeorm/list-orders/round-05-summary.json"
+      ]
+    },
+    {
+      "implementation": "prisma",
+      "endpoint": "list-products",
+      "profile": "baseline",
+      "virtualUsers": 50,
+      "warmup": "1m",
+      "measurementRounds": 5,
+      "measurementDurationPerRound": "3m",
+      "files": [
+        "prisma/list-products/campaign.json",
+        "prisma/list-products/round-01-summary.json",
+        "prisma/list-products/round-02-summary.json",
+        "prisma/list-products/round-03-summary.json",
+        "prisma/list-products/round-04-summary.json",
+        "prisma/list-products/round-05-summary.json"
+      ]
+    },
+    {
+      "implementation": "raw-sql",
+      "endpoint": "list-products",
+      "profile": "baseline",
+      "virtualUsers": 50,
+      "warmup": "1m",
+      "measurementRounds": 5,
+      "measurementDurationPerRound": "3m",
+      "files": [
+        "raw-sql/list-products/campaign.json",
+        "raw-sql/list-products/round-01-summary.json",
+        "raw-sql/list-products/round-02-summary.json",
+        "raw-sql/list-products/round-03-summary.json",
+        "raw-sql/list-products/round-04-summary.json",
+        "raw-sql/list-products/round-05-summary.json"
+      ]
+    },
+    {
+      "implementation": "typeorm",
+      "endpoint": "list-products",
+      "profile": "baseline",
+      "virtualUsers": 50,
+      "warmup": "1m",
+      "measurementRounds": 5,
+      "measurementDurationPerRound": "3m",
+      "files": [
+        "typeorm/list-products/campaign.json",
+        "typeorm/list-products/round-01-summary.json",
+        "typeorm/list-products/round-02-summary.json",
+        "typeorm/list-products/round-03-summary.json",
+        "typeorm/list-products/round-04-summary.json",
+        "typeorm/list-products/round-05-summary.json"
+      ]
+    },
+    {
+      "implementation": "prisma",
+      "endpoint": "update-product-stock",
+      "profile": "baseline",
+      "virtualUsers": 50,
+      "warmup": "1m",
+      "measurementRounds": 5,
+      "measurementDurationPerRound": "3m",
+      "files": [
+        "prisma/update-product-stock/campaign.json",
+        "prisma/update-product-stock/round-01-summary.json",
+        "prisma/update-product-stock/round-02-summary.json",
+        "prisma/update-product-stock/round-03-summary.json",
+        "prisma/update-product-stock/round-04-summary.json",
+        "prisma/update-product-stock/round-05-summary.json"
+      ]
+    },
+    {
+      "implementation": "raw-sql",
+      "endpoint": "update-product-stock",
+      "profile": "baseline",
+      "virtualUsers": 50,
+      "warmup": "1m",
+      "measurementRounds": 5,
+      "measurementDurationPerRound": "3m",
+      "files": [
+        "raw-sql/update-product-stock/campaign.json",
+        "raw-sql/update-product-stock/round-01-summary.json",
+        "raw-sql/update-product-stock/round-02-summary.json",
+        "raw-sql/update-product-stock/round-03-summary.json",
+        "raw-sql/update-product-stock/round-04-summary.json",
+        "raw-sql/update-product-stock/round-05-summary.json"
+      ]
+    },
+    {
+      "implementation": "typeorm",
+      "endpoint": "update-product-stock",
+      "profile": "baseline",
+      "virtualUsers": 50,
+      "warmup": "1m",
+      "measurementRounds": 5,
+      "measurementDurationPerRound": "3m",
+      "files": [
+        "typeorm/update-product-stock/campaign.json",
+        "typeorm/update-product-stock/round-01-summary.json",
+        "typeorm/update-product-stock/round-02-summary.json",
+        "typeorm/update-product-stock/round-03-summary.json",
+        "typeorm/update-product-stock/round-04-summary.json",
+        "typeorm/update-product-stock/round-05-summary.json"
+      ]
+    }
+  ]
+}
