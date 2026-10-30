@@ -28,7 +28,7 @@ testes de contrato, coleção Postman, observabilidade opcional e benchmarks com
 - [k6](#k6)
 - [Campanhas oficiais](#campanhas-oficiais)
 - [Testes de escrita](#testes-de-escrita)
-- [New Relic e auditoria SQL](#new-relic-e-auditoria-sql)
+- [Auditoria das consultas SQL](#auditoria-das-consultas-sql)
 - [Referência de comandos npm](#referência-de-comandos-npm)
 - [Documentação adicional](#documentação-adicional)
 
@@ -677,66 +677,7 @@ npm run k6:verify -- `
 
 Mantenha disponível a mesma fixture utilizada pela execução.
 
-## New Relic e auditoria SQL
-
-### Configurar o New Relic
-
-Copie o exemplo:
-
-```powershell
-Copy-Item apps/.env.example apps/.env
-```
-
-Edite `apps/.env` e informe uma License Key real:
-
-```dotenv
-NEW_RELIC_ENABLED=true
-NEW_RELIC_APP_NAME=tcc-orm-benchmark-raw-sql
-NEW_RELIC_LICENSE_KEY=replace_with_your_license_key
-```
-
-Valide sem imprimir a chave:
-
-```powershell
-npm run check:new-relic
-```
-
-### Iniciar com APM
-
-Em WSL ou Git Bash:
-
-```bash
-npm run start:raw-sql:apm
-npm run start:typeorm:apm
-npm run start:prisma:apm
-```
-
-Esses scripts usam atribuição de variável no formato POSIX. Em PowerShell nativo,
-use o comando equivalente abaixo, alterando nome e servidor:
-
-```powershell
-$env:NEW_RELIC_APP_NAME = "tcc-orm-benchmark-raw-sql"
-$env:NEW_RELIC_LABELS = "implementation:raw-sql;environment:benchmark"
-
-node --env-file=apps/.env `
-  --import ./scripts/validate-new-relic-env.mjs `
-  --import newrelic/esm-loader.mjs `
-  --require newrelic `
-  --import tsx `
-  apps/raw-sql/src/server.ts
-```
-
-Substituições:
-
-| Implementação | App name | Servidor |
-|---|---|---|
-| Raw SQL | `tcc-orm-benchmark-raw-sql` | `apps/raw-sql/src/server.ts` |
-| TypeORM | `tcc-orm-benchmark-typeorm` | `apps/typeorm/src/server.ts` |
-| Prisma | `tcc-orm-benchmark-prisma` | `apps/prisma/src/server.ts` |
-
-Não use APM no benchmark oficial. Execute as APIs pelos comandos `start:*` comuns.
-
-### Auditoria das consultas SQL
+## Auditoria das consultas SQL
 
 Para imprimir as consultas de uma implementação:
 
@@ -769,10 +710,6 @@ Não habilite `SQL_AUDIT` durante medições oficiais, pois logging altera o cus
 | `npm run start:raw-sql` | Inicia Raw SQL na porta 3001 |
 | `npm run start:typeorm` | Inicia TypeORM na porta 3002 |
 | `npm run start:prisma` | Inicia Prisma na porta 3003 |
-| `npm run start:raw-sql:apm` | Inicia Raw SQL com New Relic em shell POSIX |
-| `npm run start:typeorm:apm` | Inicia TypeORM com New Relic em shell POSIX |
-| `npm run start:prisma:apm` | Inicia Prisma com New Relic em shell POSIX |
-| `npm run check:new-relic` | Valida configuração do New Relic |
 | `npm test` | Executa todos os testes unitários |
 | `npm run test:shared` | Testa políticas compartilhadas |
 | `npm run test:raw-sql` | Testa Raw SQL |
@@ -847,7 +784,6 @@ de VUs, duração, warm-up e número de repetições.
 - [Setup do k6](docs/specs/SPEC-K6-BENCHMARK-SETUP.md)
 - [Endpoints de sucesso no k6](docs/specs/SPEC-K6-RAW-SQL-ENDPOINTS-SUCESSO.md)
 - [Guia detalhado do k6](tests/k6/README.md)
-- [New Relic](docs/observability/new-relic.md)
 - [Geradores de dados](docs/specs/specs-generators.md)
 - [Postman](tests/postman/README.md)
 
@@ -855,7 +791,7 @@ de VUs, duração, warm-up e número de repetições.
 
 - use o dataset `medium` nas três implementações;
 - execute apenas uma API por vez;
-- desative New Relic, `SQL_AUDIT` e logs detalhados;
+- desative `SQL_AUDIT` e logs detalhados;
 - use a mesma máquina e o mesmo PostgreSQL;
 - faça warm-up de 1 minuto;
 - execute cinco rodadas de 3 minutos;

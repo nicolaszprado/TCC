@@ -225,4 +225,4 @@ Consultas geradas e planos de execução devem ser verificados antes da coleta
 oficial. Warm-up, tamanho do pool, dataset, concorrência, processo Node.js e
 configuração de observabilidade também devem ser mantidos equivalentes. A versão
 de execução está fixada em Node.js 22.12.0 pelo arquivo `.nvmrc`, compatível com
-Prisma 7, TypeORM 0.3 e o agente New Relic utilizado pelo projeto.
+Prisma 7 e TypeORM 0.3.

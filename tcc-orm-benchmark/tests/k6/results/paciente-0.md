@@ -39,7 +39,7 @@ Esses números demonstram que a infraestrutura de teste está operacional, mas a
 - A ordem das implementações não foi alternada.
 - Processos em segundo plano e condições de CPU e memória não foram controlados formalmente.
 - As demais APIs podem ter permanecido abertas durante as medições.
-- O estado do New Relic não foi confirmado durante o ensaio.
+- Não foi utilizada instrumentação adicional durante o ensaio.
 - Os resultados não foram exportados para JSON pelo k6.
 - Foi utilizado o dataset pequeno, e não o dataset oficial de 100.000 produtos.
 

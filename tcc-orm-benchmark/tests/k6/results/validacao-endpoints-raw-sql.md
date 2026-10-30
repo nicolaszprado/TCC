@@ -13,7 +13,7 @@ Campanha: `k6_validation_1792120182479_e98af5`.
 
 - Raw SQL iniciada temporariamente na porta 3101.
 - Banco temporário exclusivo, carregado com os CSVs do dataset small.
-- Node 22.14.0, k6 2.2.0, Windows; API sem APM e SQL_AUDIT=false.
+- Node 22.14.0, k6 2.2.0, Windows; SQL_AUDIT=false e sem instrumentação adicional.
 - Smoke de leitura: 1 VU/10s. Smoke de escrita: 1 VU/1 iteração.
 - Carga de validação: 10 VUs/10s por perfil, sem warm-up oficial.
 - 26 execuções: 25 aprovadas e 1 reprovada.

@@ -58,7 +58,6 @@ Foi identificado que podem estar ausentes módulos como:
 - prisma
 - @prisma/client
 - @prisma/adapter-pg
-- newrelic
 
 Execute o typecheck das três aplicações.
 
@@ -346,40 +345,7 @@ Faça também casos inválidos:
 Não compare campos que sejam legitimamente não determinísticos sem antes justificar.
 
 ==================================================
-8. NEW RELIC
-==================================================
-
-Audite a configuração do New Relic.
-
-As três aplicações devem ter configuração equivalente.
-
-Pode haver nomes diferentes:
-
-tcc-raw-sql
-tcc-typeorm
-tcc-prisma
-
-Isso é desejado para separação no painel.
-
-Mas compare:
-
-- tracing;
-- sampling;
-- logging;
-- labels;
-- environment;
-- database instrumentation;
-- transaction naming;
-- error collection.
-
-Não deixe uma aplicação com instrumentação adicional em relação às outras.
-
-O New Relic será utilizado principalmente para análise diagnóstica.
-
-Não altere ainda o protocolo do benchmark.
-
-==================================================
-9. LOGGING
+8. LOGGING
 ==================================================
 
 Identifique e padronize:
@@ -495,8 +461,6 @@ No final, valide este checklist:
 
 [ ] N+1 verificado
 
-[ ] New Relic simétrico
-
 [ ] Logging simétrico
 
 [ ] Testes integrados passam
@@ -534,21 +498,18 @@ Raw SQL
 - isolation:
 - retry:
 - logging:
-- New Relic:
 
 TypeORM
 - pool:
 - isolation:
 - retry:
 - logging:
-- New Relic:
 
 Prisma
 - pool:
 - isolation:
 - retry:
 - logging:
-- New Relic:
 
 # 4. Auditoria por endpoint
 

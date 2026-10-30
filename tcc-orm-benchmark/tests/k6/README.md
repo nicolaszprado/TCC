@@ -29,7 +29,7 @@ Execute todos os comandos abaixo na raiz `tcc-orm-benchmark`, em PowerShell.
 - k6 no PATH (`k6 version`). Se necessário, `winget install k6 --source winget`.
 - PostgreSQL configurado no `.env` da raiz, com schema, índices e CSVs carregados.
 - Uma API iniciada: Raw SQL na porta 3001, TypeORM na 3002 ou Prisma na 3003.
-- Para oficiais, New Relic e logging SQL desligados e apenas uma API sob teste.
+- Para oficiais, mantenha o logging SQL desligado e execute apenas uma API sob teste.
 
 O k6 é externo às APIs. Não execute os arquivos k6 com Node.
 O runner e as ferramentas de preparação usam Node/tsx.
@@ -319,8 +319,8 @@ contra a API e o banco que serão usados no benchmark.
 - `PRODUCT_ID`, `ORDER_ID`, `CUSTOMER_ID`: diagnóstico de leitura com ID existente.
 - `MIN_PRODUCT_ID`/`MAX_PRODUCT_ID`: compatibilidade do teste de produto; intervalo
   só é aceito se contínuo nas fixtures; PRODUCT_ID tem precedência.
-- `API_APM_STATE`, `API_LOGGING_STATE`, `WARMUP_NOTE`: registre o estado que foi
-  efetivamente conferido. Por padrão o runner declara “não verificado”.
+- `API_LOGGING_STATE`, `WARMUP_NOTE`: registre o estado que foi efetivamente
+  conferido. Por padrão o runner declara “não verificado”.
 - `summary.json`: métricas k6, percentis, checks e metadados do cenário.
 - `metadata.json`: ambiente, revisão Git, alterações locais, versões e políticas.
 - `exit.json`, `console.log`: conclusão/abortos e detalhes da execução.

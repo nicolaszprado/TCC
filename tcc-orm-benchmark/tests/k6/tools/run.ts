@@ -67,7 +67,7 @@ async function main(): Promise<void> {
       platform: platform(), osRelease: release(), cpu: cpus()[0]?.model, logicalCpus: cpus().length, memoryBytes: totalmem(),
       git: { revision: git(['rev-parse', 'HEAD']), changes: git(['status', '--short']) },
       policy: { pool: DATABASE_POOL_POLICY, isolation: TRANSACTION_ISOLATION_SQL, retryAttempts: MAX_TRANSACTION_ATTEMPTS },
-      controls: { apm: process.env.API_APM_STATE || 'not verified', logging: process.env.API_LOGGING_STATE || 'not verified', warmup: process.env.WARMUP_NOTE || 'not performed by runner' },
+      controls: { logging: process.env.API_LOGGING_STATE || 'not verified', warmup: process.env.WARMUP_NOTE || 'not performed by runner' },
       fixturePreparedAt: f.preparedAt, startedAt: new Date().toISOString() };
     await jsonFile(join(directory, 'metadata.json'), metadata);
     if (writes) await jsonFile(fixturePath + '.used', { runId, endpoint, startedAt: metadata.startedAt });

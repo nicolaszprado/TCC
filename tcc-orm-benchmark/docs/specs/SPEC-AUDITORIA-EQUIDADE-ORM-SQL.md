@@ -147,7 +147,6 @@ Verificar também se as aplicações possuem configurações equivalentes de:
 - timeouts;
 - keep-alive;
 - logging;
-- New Relic/APM;
 - middlewares;
 - serialização JSON;
 - tratamento de erros.

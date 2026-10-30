@@ -29,11 +29,9 @@ com um Node 22.12.0 temporário, correspondente ao `.nvmrc` e ao campo `engines`
 | `apps/*/src/services/product.service.ts` | Gera o mesmo timestamp de aplicação para atualização de estoque. |
 | `apps/*/src/repositories/product.repository.ts` | Recebe o timestamp comum e mantém uma operação de atualização. |
 | `apps/*/src/repositories/order.repository.ts` | Normaliza `SERIALIZABLE`, retry, backoff, sequência e atualização condicional de estoque. |
-| `apps/.env.example` | Define opções New Relic equivalentes sem incluir segredo. |
 | `tests/equivalence/api-equivalence.mjs` | Compara contratos HTTP das três APIs usando casos seguros. |
-| `package.json` | Adiciona testes compartilhados/integrados e torna o comando APM Raw SQL simétrico. |
+| `package.json` | Adiciona testes compartilhados/integrados. |
 | `package-lock.json` | Registra a instalação reproduzível das dependências declaradas. |
-| `docs/observability/new-relic.md` | Documenta simetria do APM e separação do logging SQL diagnóstico. |
 
 O timestamp de `PATCH /products/:id/stock` ficou sob responsabilidade da
 aplicação nas três versões. Usar `CURRENT_TIMESTAMP` de forma idiomática no
@@ -50,7 +48,6 @@ das ferramentas.
 - retry: máximo 3 tentativas, apenas `40001`/`40P01`, backoff linear de 10 ms;
 - locks: nenhum lock pessimista explícito; updates adquirem os locks normais do PostgreSQL;
 - logging: SQL desligado; `SQL_AUDIT=true` habilita diagnóstico;
-- New Relic: agente e opções comuns; nome `tcc-orm-benchmark-raw-sql`.
 
 ### TypeORM
 
@@ -59,7 +56,6 @@ das ferramentas.
 - retry: máximo 3 tentativas, apenas `40001`/`40P01`, mesmo backoff;
 - locks: nenhum lock pessimista explícito; updates adquirem os locks normais do PostgreSQL;
 - logging: `false`; queries apenas com `SQL_AUDIT=true`;
-- New Relic: agente e opções comuns; nome `tcc-orm-benchmark-typeorm`.
 
 ### Prisma
 
@@ -68,7 +64,6 @@ das ferramentas.
 - retry: máximo 3 tentativas para `P2034`, mesmo backoff;
 - locks: nenhum lock pessimista explícito; `updateMany` condicional por item;
 - logging: desligado; queries apenas com `SQL_AUDIT=true`;
-- New Relic: agente e opções comuns; nome `tcc-orm-benchmark-prisma`.
 
 ### POST /orders
 
@@ -122,7 +117,6 @@ execução com `SQL_AUDIT=true`.
 2. Usar Node 22.12.0 no ambiente real do benchmark; o Node padrão detectado era 18.19.1.
 3. Iniciar as três APIs com `SQL_AUDIT=true` e registrar o SQL dos três endpoints relacionais.
 4. Executar `npm run test:integration:equivalence` com as três APIs ativas.
-5. Validar a conexão New Relic com uma License Key real em rodada diagnóstica separada.
 
 Não foi executado benchmark k6 e nenhuma conclusão de desempenho foi produzida.
 
@@ -141,7 +135,6 @@ Não foi executado benchmark k6 e nenhuma conclusão de desempenho foi produzida
 - [x] `POST /orders` normalizado
 - [ ] SQL runtime dos endpoints relacionais analisado
 - [ ] N+1 verificado em runtime
-- [x] New Relic configurado simetricamente
 - [x] Logging configurado simetricamente
 - [ ] Testes integrados executados com as três APIs
 - [x] Nenhum cache exclusivo

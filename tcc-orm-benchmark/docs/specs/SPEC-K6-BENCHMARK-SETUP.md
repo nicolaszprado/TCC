@@ -534,27 +534,7 @@ O stress test não deve ser criado antes da validação dos cenários de carga n
 
 ---
 
-## 20. New Relic
-
-O k6 será responsável pelas métricas externas de desempenho.
-
-O New Relic deverá ser utilizado como ferramenta diagnóstica para observar:
-
-- transaction duration;
-- database duration;
-- CPU;
-- memória;
-- traces;
-- consultas;
-- erros.
-
-Durante os testes oficiais, considerar executar o benchmark principal com New Relic desativado caso o overhead do APM possa interferir nos resultados.
-
-Executar rodadas diagnósticas separadas com New Relic habilitado.
-
----
-
-## 21. Logging
+## 20. Logging
 
 Durante benchmark oficial:
 

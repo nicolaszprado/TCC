@@ -225,7 +225,7 @@ O README final deve fornecer comandos completos de preparação, verificação e
 Para cada medição, salvar:
 
 - `{RUN_ID}-summary.json`: resumo k6; compor `RUN_ID` com dataset, endpoint, perfil, VUs e número da rodada, conforme exemplo acima.
-- Arquivo de metadados associado: horário, URL, versões k6/Node/PostgreSQL/dependências, revisão Git e estado de alterações locais, hardware, sistema operacional, dataset e hash das fixtures, parâmetros, duração, política de pool/transações, estado de APM/logging e protocolo de warm-up.
+- Arquivo de metadados associado: horário, URL, versões k6/Node/PostgreSQL/dependências, revisão Git e estado de alterações locais, hardware, sistema operacional, dataset e hash das fixtures, parâmetros, duração, política de pool/transações, estado do logging e protocolo de warm-up.
 - Para escritas: preparação, orçamento, contagens antes/depois e verificação do estoque.
 
 Usar subpastas por campanha ou acrescentar uma data/hora ao `RUN_ID` para garantir nomes únicos; não sobrescrever resultados existentes. Manter resumos de falhas, identificados como inválidos, separados das médias oficiais.
