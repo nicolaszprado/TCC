@@ -163,7 +163,9 @@ export async function insertOrder(input: CreateOrderInput): Promise<CreateOrderR
       }, {
         isolationLevel: TRANSACTION_ISOLATION_PRISMA,
       }),
-      (error) => hasErrorCode(error, 'P2034') || hasErrorCode(error, '40001'),
+      (error) => hasErrorCode(error, 'P2034')
+        || hasErrorCode(error, '40001')
+        || hasErrorCode(error, '40P01'),
     );
   } catch (error) {
     if (error instanceof TransactionAbort) return { kind: error.kind };
